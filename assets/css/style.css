@@ -1,58 +1,5 @@
-/*==============================================
-  Project:   Massive - Multipurpose Responsive Theme
-  Build:     Bootstrap 3+
-  Author:    ThemeBucket
- ===============================================*/
-/*==============================================
-  Table of Contents
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
 
-  0. tb preloader
-  1. import css files
-  2. typography
-  3. header
-  4. top mega menu
-  5. menu appear alt
-  6. floating menu
-  7. nav icon
-  8. nav link boxed
-  9. nav link border box
-  10. nav link border bottom
-  11. nav center align
-  12. nav bottom position
-  13. nav block left align
-  14. pre-defined >  margin top | margin bottom
-  15. body content
-  16. portfolio
-  17. portfolio with title
-  18. portfolio masonry
-  19. Isotope Filtering
-  20. portfolio details
-  21. portfolio nav
-  22. masonry grid
-  23. Flex Slider
-  24. slider revolution
-  25. maintenance
-  26. top bar
-  27. primary nav
-  28. countdown
-  29. bs slider
-  30. static banner
-  31. video banner
-  32. custom pagination
-  33. Product list
-  34. contact us
-  35. event page
-  36. magazine page
-  37. catering page
-  38. hotel page
-  39. app landing page
-  40. Slider Typist
-  41. Boxed View
-  42. scroll top
- ===============================================*/
-/*==============================================
- Pre Loader
- ===============================================*/
 #tb-preloader {
     position: fixed;
     z-index: 999999;
