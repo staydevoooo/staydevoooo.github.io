@@ -84,11 +84,11 @@ a:focus {
 }
 
 .activated {
-	border-bottom: solid 1px #d3d3d3
+	border-bottom: solid 1px #d3d3d3;
 }
 
 .deactivated:hover {
-	border-bottom: solid 1px #d3d3d3
+	border-bottom: solid 1px #d3d3d3;
 }
 
 h1,
@@ -778,7 +778,7 @@ pre {
 
 .menuzord-menu>li.active>a,
 .menuzord-menu>li:hover>a {
-	color: #333
+	color: #333;
   border-bottom: solid 1px #d3d3d3
 }
 
@@ -823,7 +823,7 @@ pre {
 
 .menuzord-menu ul.dropdown li:hover>a {
 	padding-right: 19px;
-	color: #333
+	color: #333;
   border-bottom: solid 1px #d3d3d3
 }
 
