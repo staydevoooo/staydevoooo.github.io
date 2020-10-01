@@ -136,7 +136,8 @@ a,
 
 nav ul .active {
     border-bottom: solid 1px lightgray;
-    margin-top: -15;
+    margin: 0;
+    padding: 0;
 }
 
 @media (min-width: 768px) {
