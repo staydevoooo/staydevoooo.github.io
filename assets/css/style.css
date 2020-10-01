@@ -1,4 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
+@import url(https://dve4ever.github.io/css/home/themify-icons.css);
+@import url(https://dve4ever.github.io/css/home/material-design-iconic-font.min.css);
+@import url(https://dve4ever.github.io/css/home/plugins/animate.css);
+@import url(https://dve4ever.github.io/css/home/plugins/animate-slider.css);
+@import url(https://dve4ever.github.io/css/home/shortcode/default.css);
+@import url(https://dve4ever.github.io/css/home/plugins/jquery-ui.css);
+@import url(https://dve4ever.github.io/css/home/plugins/magnific-popup.css);
+@import url(https://dve4ever.github.io/css/home/plugins/slick.css);
+@import url(https://dve4ever.github.io/css/home/plugins/slick-theme.css);
+@import url(https://dve4ever.github.io/css/home/plugins/meanmenu.css);
+@import url(https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700|Poppins:300,400,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Arizonia);
+@import url(https://dve4ever.github.io/css/home/responsive.css);
+@import url(https://dve4ever.github.io/css/home/bootstrap.min.css);
+@import url(https://dve4ever.github.io/css/home/owl.carousel.min.css);
+@import url(https://dve4ever.github.io/css/home/owl.theme.default.min.css);
+@import url(https://dve4ever.github.io/css/home/shortcode/shortcodes.css);
+@import url(https://dve4ever.github.io/css/color-box-latest.css);
+@import url(https://unpkg.com/aos@2.3.1/dist/aos.css);
+@import url(https://wpcc.io/lib/1.0.2/cookieconsent.min.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
 
 #tb-preloader {
     position: fixed;
@@ -6760,3 +6781,9 @@ Table of contents
         margin: 10px;
     }
 }
+
+
+
+
+
+
