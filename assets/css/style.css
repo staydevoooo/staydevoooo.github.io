@@ -83,14 +83,6 @@ a:focus {
 	outline: 0!important
 }
 
-.activated {
-	border-bottom: solid 1px #d3d3d3;
-}
-
-.deactivated:hover {
-	border-bottom: solid 1px #d3d3d3;
-}
-
 h1,
 h2,
 h3,
@@ -778,8 +770,7 @@ pre {
 
 .menuzord-menu>li.active>a,
 .menuzord-menu>li:hover>a {
-	color: #333;
-  border-bottom: solid 1px #d3d3d3
+	color: #333
 }
 
 .menuzord-menu ul.dropdown,
@@ -823,8 +814,7 @@ pre {
 
 .menuzord-menu ul.dropdown li:hover>a {
 	padding-right: 19px;
-	color: #333;
-  border-bottom: solid 1px #d3d3d3
+	color: #333
 }
 
 .menuzord-menu ul.dropdown.dropdown-left {
@@ -6498,4 +6488,14 @@ address p {
 	.count-down-alt .c-grid {
 		margin: 10px
 	}
+}
+
+nav div ul .active {
+	border-bottom: solid 1px #d3d3d3
+}
+
+header nav div ul li a .active:hover,
+header nav div ul li a:hover {
+	color: #be8040;
+	border-bottom-color: #be8040
 }
