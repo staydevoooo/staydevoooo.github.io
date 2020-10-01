@@ -61,11 +61,11 @@ a,
 .cd-nav .cd-primary-nav li.selected a,
 .no-touch .cd-nav .cd-primary-nav a:hover,
 .intro-portfolio a:hover {
-    color: #000;
+    color: #eb9191;
 }
 
 .theme-color {
-    color: #000 !important;
+    color: #eb9191 !important;
 }
 
 .theme-bg,
@@ -74,31 +74,31 @@ a,
 .ei-slider-thumbs li.ei-slider-element,
 .massive-progress.progress-theme-color .progress-bar > span,
 .massive-progress.progress-theme-color .progress-bar > span:before {
-    background: #000 !important;
+    background: #eb9191 !important;
 }
 
 .massive-progress.progress-theme-color .progress-bar > span:before {
-    border-color: #000;
+    border-color: #eb9191;
 }
 
 .btn-theme-border-color,
 .widget-social-link a:hover,
 .widget-tags a:hover {
-    border: 1px solid #000;
+    border: 1px solid #eb9191;
 }
 
 .icon-tabs .nav-pills > li > a:hover,
 .icon-tabs .nav-pills > li.active > a,
 .icon-tabs .nav-pills > li.active > a:focus,
 .icon-tabs .nav-pills > li.active > a:hover {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #eb9191;
 }
 
 .btn-theme-border-color:hover,
 .price-col.feature .p-btn:hover,
 .side-social-link a:hover,
 .massive-progress.progress-theme-color .progress-bar > span:before {
-    border: 1px solid #000;
+    border: 1px solid #eb9191;
 }
 
 .accordion.time-line > dt > a:hover:after,
@@ -126,7 +126,7 @@ a,
 .travel-form.icon-tabs .nav-pills > li.active:hover > a,
 .travel-form.icon-tabs .nav-pills > li.active > a,
 .travel-form.icon-tabs .nav-pills > li.active > a:focus {
-    background: #000;
+    background: #eb9191;
 }
 
 .menuzord .menuzord-menu ul.dropdown li:hover > a,
@@ -136,19 +136,20 @@ a,
 
 nav ul .active {
     border-bottom: solid 1px lightgray;
+    margin-top: -15;
 }
 
 @media (min-width: 768px) {
     .c-nav_s-underline.menuzord-menu > li.active > a,
     .c-nav_s-underline.menuzord-menu > li:hover > a {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #eb9191;
     }
     .c-nav_s-outline.menuzord-menu > li.active > a,
     .c-nav_s-outline.menuzord-menu > li:hover > a {
-        border: 1px solid #000;
+        border: 1px solid #eb9191;
     }
     .c-nav_s-bg.menuzord-menu > li.active > a,
     .c-nav_s-bg.menuzord-menu > li:hover > a {
-        background: #000;
+        background: #eb9191;
     }
 }
