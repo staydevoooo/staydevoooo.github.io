@@ -134,11 +134,11 @@ a,
     color: #fff;
 }
 
-nav ul .active {
-    border-bottom: solid 1px lightgray;
-    margin: 0;
-    padding: 0;
+nav { 
+    font-size: 12.8px;
 }
+
+
 
 @media (min-width: 768px) {
     .c-nav_s-underline.menuzord-menu > li.active > a,
