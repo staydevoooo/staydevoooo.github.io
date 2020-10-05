@@ -1,125 +1,125 @@
 h1,
 input::-webkit-input-placeholder,
 button {
-	font-family: roboto, sans-serif;
-	transition: all .3s ease-in-out;
-	text-align: center;
-	align-content: center
+	font-family: roboto, sans-serif!important;
+	transition: all .3s ease-in-out!important;
+	text-align: center!important;
+	align-content: center!important;
 }
 
 h1 {
-	height: 100px;
-	width: 100%;
-	font-size: 18px;
-	background: #120a21;
-	color: #fff;
-	line-height: 150%;
-	border-radius: 3px 3px 0 0;
-	box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .2)
+	height: 100px!important;
+	width: 100%!important;
+	font-size: 18px!important;
+	background: #120a21!important;
+	color: #fff!important;
+	line-height: 150%!important;
+	border-radius: 3px 3px 0 0!important;
+	box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .2)!important;
 }
 
 form {
-	box-sizing: border-box;
-	width: 260px;
-	margin: 100px auto 0;
-	box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, .2);
-	padding-bottom: 40px;
-	border-radius: 3px
+	box-sizing: border-box!important;
+	width: 260px!important;
+	margin: 100px auto 0!important;
+	box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, .2)!important;
+	padding-bottom: 40px!important;
+	border-radius: 3px!important;
 }
 
 form h1 {
-	box-sizing: border-box;
-	padding: 20px
+	box-sizing: border-box!important;
+	padding: 20px!important;
 }
 
 input {
-	margin: 40px 25px;
-	width: 200px;
-	display: block;
-	border: none;
-	padding: 10px 0;
-	border-bottom: solid 0 #120a21;
-	transition: all .3s cubic-bezier(.64, .09, .08, 1);
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #120a21 4%);
-	background-position: -200px 0;
-	background-size: 200px 100%;
-	background-repeat: no-repeat;
-	color: #fff
+	margin: 40px 25px!important;
+	width: 200px!important;
+	display: block!important;
+	border: none!important;
+	padding: 10px 0!important;
+	border-bottom: solid 0 #120a21!important;
+	transition: all .3s cubic-bezier(.64, .09, .08, 1)!important;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #120a21 4%)!important;
+	background-position: -200px 0!important;
+	background-size: 200px 100%!important;
+	background-repeat: no-repeat!important;
+	color: #fff!important;
 }
 
 input:focus,
 input:valid {
-	box-shadow: none;
-	outline: none;
-	background-position: 0 0
+	box-shadow: none!important;
+	outline: none!important;
+	background-position: 0 0!important;
 }
 
 input:focus::-webkit-input-placeholder,
 input:valid::-webkit-input-placeholder {
-	color: #120a21;
-	font-size: 11px;
-	transform: translateY(-20px);
+	color: #120a21!important;
+	font-size: 11px!important;
+	transform: translateY(-20px)!important;
 	visibility: visible!important
 }
 
 button {
-	border: none;
-	background: #120a21;
-	cursor: pointer;
-	border-radius: 3px;
-	padding: 6px;
-	width: 200px;
-	color: #fff;
-	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)
+	border: none!important;
+	background: #120a21!important;
+	cursor: pointer!important;
+	border-radius: 3px!important;
+	padding: 6px!important;
+	width: 200px!important;
+	color: #fff!important;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)!important;
 }
 
 button:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .2)
+	transform: translateY(-3px)!important;
+	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .2)!important
 }
 
 .follow {
-	width: 42px;
-	height: 42px;
-	border-radius: 50px;
-	background: #120a21;
-	display: inline-block;
-	margin: 50px calc(50% - 21px);
-	white-space: nowrap;
-	padding: 13px;
-	box-sizing: border-box;
-	color: #fff;
-	transition: all .2s ease;
-	font-family: Roboto, sans-serif;
-	text-decoration: none;
-	box-shadow: 0 5px 6px 0 rgba(0, 0, 0, .2)
+	width: 42px!important;
+	height: 42px!important;
+	border-radius: 50px!important;
+	background: #120a21!important;
+	display: inline-block!important;
+	margin: 50px calc(50% - 21px)!important;
+	white-space: nowrap!important;
+	padding: 13px!important;
+	box-sizing: border-box!important;
+	color: #fff!important;
+	transition: all .2s ease!important;
+	font-family: Roboto, sans-serif!important;
+	text-decoration: none!important;
+	box-shadow: 0 5px 6px 0 rgba(0, 0, 0, .2)!important;
 }
 
 .follow i {
-	margin-right: 20px;
-	transition: margin-right .2s ease
+	margin-right: 20px!important;
+	transition: margin-right .2s ease!important;
 }
 
 .follow:hover {
-	width: 134px;
-	transform: translateX(-50px)
+	width: 134px!important;
+	transform: translateX(-50px)!important;
 }
 
 .follow:hover i {
-	margin-right: 10px
+	margin-right: 10px!important;
 }
 
 body {
-	overflow: hidden
+	overflow: hidden!important;
 }
 
 input,
 select,
 textarea {
-	color: #fffff
+	color: #fffff!important;
 }
 
 textarea:focus,
 input:focus {
-	color: #fffff
+	color: #fffff!important;
 }
