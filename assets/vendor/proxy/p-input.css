@@ -1,10 +1,12 @@
 h1, input::-webkit-input-placeholder, button {
-  font-family: 'Sansita', sans-serif;
   transition: all 0.3s ease-in-out;
   text-align: center;
   align-content: center;
 }
 
+body { 
+  color: white;
+}
 form {
 
   width: 260px;
@@ -22,9 +24,9 @@ input {
   display: block;
   border: none;
   padding: 10px 0;
-  border-bottom: solid 0px #120a21;
+  border-bottom: solid 0px #eb9191;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #120a21 4%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #eb9191 4%);
   background-position: -200px 0;
   background-size: 200px 100%;
   background-repeat: no-repeat;
@@ -36,14 +38,14 @@ input:focus, input:valid {
   background-position: 0 0;
 }
 input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
-  color: #120a21;
+  color: #eb9191;
   font-size: 11px;
   transform: translateY(-20px);
   visibility: visible !important;
 }
 button {
   border: none;
-  background: #120a21;
+  background: #eb9191;
   cursor: pointer;
   border-radius: 3px;
   padding: 6px;
@@ -59,7 +61,7 @@ button:hover {
   width: 42px;
   height: 42px;
   border-radius: 50px;
-  background: #120a21;
+  background: #eb9191;
   display: inline-block;
   margin: 50px calc(50% - 21px);
   white-space: nowrap;
