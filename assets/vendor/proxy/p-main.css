@@ -9,18 +9,22 @@ body {
 	margin: 0
 }
 
-html, body {
-  height: 100%;
+.wrapper {
+  box-sizing: border-box!important;
+  position: relative!important;
+  padding-bottom: 1em!important; 
+  min-height: 100%!important;
 }
+
+html,
 body {
-  display: flex;
-  flex-direction: column;
+  margin: 0!important;
+  height: 100%!important;
 }
-.content {
-  flex: 1 0 auto;
-}
-.footer {
-  flex-shrink: 0;
+
+footer {
+  position: absolute!important;
+  bottom: 0!important;
 }
 
 @media screen and (min-width:600px) {
