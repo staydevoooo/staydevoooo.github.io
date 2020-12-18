@@ -116,19 +116,17 @@
                            </style>
                            <div id="wrapper">
                               <form action="javascript:void(calc())">
-                                 <p class="unselect">Amount: <input id="input_number" type="text"></p>
-                                 <p class="unselect">Percentage: <input id="input" type="text">%</p>
+                                    <input class="form-control" placeholder="Number" id="interest_years" type="input_number">
+                                    <input class="form-control" placeholder="Percentage" id="input" type="text">
                                  <input class="unselect" type="checkbox" id="calulate_interest" onchange="interestButton()" name="calulate_interest" value="calulate_interest">
                                  <label class="unselect" for="calulate_interest">Calculate Interest?</label>
                                  <br>
-                                 <div>
-                                    <p class="unselect">
-                                       How many years?:
-                                    </p>
-                                    <input id="interest_years" type="text">
-                                 </div>
+
+
+                                    <input class="form-control" placeholder="Years" id="interest_years" type="text">
+
                                  <br>
-                                 <input class="btn btn-medium btn-dark-solid  text-uppercase" type="submit" value="Calculate">
+                                 <input class="btn btn-primary px-5" type="submit" value="Calculate">
                                  <br>
                                  <h4 class="unselect">
                                     Percentages
