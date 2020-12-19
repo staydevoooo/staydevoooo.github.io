@@ -106,85 +106,93 @@
                            <h3 style="font-family: 'Sansita', sans-serif;margin-bottom:30px;text-decoration:underline;">Tax/Percentage Calculator</h3>
                            <colorbox style="text-align:left;text-align:justify;" id="black">
                               <style>
-                                 .interest_text {
-                                 display: none
-                                 }
-                                 .unselect {
-                                 -webkit-user-select: none;
-                                 /* Safari */
-                                 -moz-user-select: none;
-                                 /* Firefox */
-                                 -ms-user-select: none;
-                                 /* IE10+/Edge */
-                                 user-select: none;
-                                 /* Standard */
-                                 }
-                              </style>
-                              <div id="wrapper">
-                                 <form style="width:100%" action="javascript:void(calc())">
-                                    <p class="unselect">Number</p>
-                                    <input class="form-control" placeholder="Number" id="interest_years" type="number" min="1">
-                                    <br>
-                                    <p class="unselect">Percentage</p>
-                                    <input class="form-control" placeholder="Percentage" id="input" type="number" min="1" max="100">
-                                    <input class="unselect" type="checkbox" id="calulate_interest" onchange="interestButton()" name="calulate_interest" value="calulate_interest">
-                                    <label class="unselect" for="calulate_interest">Calculate Interest?</label>
-                                    <br>
-                                    <p class="unselect">Years</p>
-                                    <input class="form-control" placeholder="Years" id="interest_years" type="text">
-                                    <br>
-                                    <input class="btn btn-primary px-5 unselect" type="submit" value="Calculate">
-                                    <br>
-                                    <h4 style="font-family: 'Sansita', sans-serif;margin-bottom:30px;text-decoration:underline;">Percentage Output</h4>
-                                    <div>
-                                       <p class="unselect">Percentage / Amount: </p>
-                                       <span id="percent_answer"></span>
-                                    </div>
-                                    <div>
-                                       <p class="unselect">Percentage - Amount: </p>
-                                       <span id="percent_minus_amount"></span>
-                                    </div>
-                                    <div>
-                                       <p class="unselect">Percentage + Amount: </p>
-                                       <span id="total"></span>
-                                    </div>
-                                    <br>
-                                    <h4 style="font-family: 'Sansita', sans-serif;margin-bottom:30px;text-decoration:underline;">Intrest Output</h4>
-                                    <div>
-                                       <p class="unselect">Interest + Amount: </p>
-                                       <span id="interest"></span>
-                                    </div>
-                                 </form>
-                              </div>
-                              <script>
-                                 function calc() {
-                                   var input_number = Number(document.getElementById('input_number').value);
-                                   var input = Number(document.getElementById('input').value);
-                                   var interest_years = Number(document.getElementById('interest_years').value);
-                                   var input_percentage = '.' + (input);
-                                 
-                                   var interest = input_number / "10" * input_percentage * interest_years + input_number;
-                                 
-                                   var percent_answer = input_number * input_percentage;
-                                   var percent_minus_amount = input_number - percent_answer;
-                                 
-                                   var total_input_number = input_number + percent_answer;
-                                 
-                                   document.getElementById("percent_answer").innerHTML = Number(percent_answer).toFixed(2);
-                                   document.getElementById("total").innerHTML = Number(total_input_number).toFixed(2);
-                                   document.getElementById("interest").innerHTML = Number(interest).toFixed(2);
-                                   document.getElementById("percent_minus_amount").innerHTML = Number(percent_minus_amount).toFixed(2);
-                                 
-                                 
-                                 }
-                                 
-                                 $(function() {
-                                   $("#calulate_interest").on("click", function() {
-                                     $(".interest_text").toggle(this.checked);
-                                   });
-                                 });
-                                 
-                              </script>
+  .interest_text {
+    display: none
+  }
+
+  .unselect {
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+  }
+
+</style>
+<div id="wrapper">
+  <form action="javascript:void(calc())">
+    <p class="unselect">Number: <input id="input_number" type="text"></p>
+    <p class="unselect">Percentage: <input id="input" type="text">%</p>
+    <input class="unselect" type="checkbox" id="calulate_interest" onchange="interestButton()" name="calulate_interest" value="calulate_interest">
+    <label class="unselect" for="calulate_interest">Calculate Interest?</label>
+    <br>
+    <div>
+      <p class="unselect">
+        How many years?:
+      </p>
+      <input id="interest_years" type="text">
+    </div>
+    <br>
+    <input class="btn btn-medium btn-dark-solid  text-uppercase" type="submit" value="Calculate">
+    <br>
+    <h4 class="unselect">
+      Percentages
+    </h4>
+    <div>
+      <p class="unselect">Percent of number </p>
+      <span id="percent_answer"></span>
+    </div>
+    <div>
+      <p class="unselect">Number - Percentage: </p>
+      <span id="percent_minus_amount"></span>
+    </div>
+    <div>
+      <p class="unselect">Number + Percentage: </p>
+      <span id="total"></span>
+    </div>
+    <br>
+    <h4 class="unselect">
+      Interest
+    </h4>
+    <div>
+      <p class="unselect">Number + Interst: </p>
+      <span id="interest"></span>
+    </div>
+  </form>
+</div>
+<script>
+  function calc() {
+    var input_number = Number(document.getElementById('input_number').value);
+    var input = Number(document.getElementById('input').value);
+    var interest_years = Number(document.getElementById('interest_years').value);
+    var input_percentage = '.' + (input);
+
+    var interest = input_number / "10" * input_percentage * interest_years + input_number;
+
+    var percent_answer = input_number * input_percentage;
+    var percent_minus_amount = input_number - percent_answer;
+
+    var total_input_number = input_number + percent_answer;
+
+    document.getElementById("percent_answer").innerHTML = Number(percent_answer).toFixed(2);
+    document.getElementById("total").innerHTML = Number(total_input_number).toFixed(2);
+    document.getElementById("interest").innerHTML = Number(interest).toFixed(2);
+    document.getElementById("percent_minus_amount").innerHTML = Number(percent_minus_amount).toFixed(2);
+
+
+  }
+
+  $(function() {
+    $("#calulate_interest").on("click", function() {
+      $(".interest_text").toggle(this.checked);
+    });
+  });
+
+</script>
+
                            </colorbox>
                            <br>
                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
