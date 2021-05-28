@@ -1,29 +1,34 @@
 <html>
 <head>
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
+    google.load('search', '1');
+    google.setOnLoadCallback(OnLoad);
+    var search;
 
-    var keyword = "mountains";
+    //i suggest instead of this to make keywords list so first to pick random keyword than to do search and pick random image
+    var keyword = 'olivia rodrigo';
 
-    $(document).ready(function(){
+    function OnLoad()
+    {
+        search = new google.search.ImageSearch();
 
-        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        search.setSearchCompleteCallback(this, searchComplete, null);
+
+        search.execute(keyword);
+    }
+
+    function searchComplete()
+    {
+        if (search.results && search.results.length > 0)
         {
-            tags: keyword,
-            tagmode: "any",
-            format: "json"
-        },
-        function(data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
+            var rnd = Math.floor(Math.random() * search.results.length);
 
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-
-            $('body').css('background-image', "url('" + image_src + "')");
-
-        });
-
-    });
+            //you will probably use jQuery and something like: $('body').css('background-image', "url('" + search.results[rnd]['url'] + "')");
+            document.body.style.backgroundImage = "url('" + search.results[rnd]['url'] + "')";
+        }
+    }
     </script>
 </head>
 <body>
