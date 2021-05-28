@@ -1,40 +1,42 @@
 <html>
-   <body onload="getImage()">
-      <div id="image"></div>
-      <script>
-         function getUrlVars() {
-           var vars = {};
-           var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-             vars[key] = value;
-           });
-           return vars;
-         }
-         
-         function getImage() {
-           
-           var vars = getUrlVars();
-           var q = vars['q'];
-           var start = Math.floor(Math.random() * 500);
-           const Http = new XMLHttpRequest();
-           const url = "https://www.googleapis.com/customsearch/v1?cx=002432359258516468809:no3xkeywlwu&key=AIzaSyCi-Em4xz-BhfDlff4aANxB7YV0WrztWbo&searchType=image&num=1&q=olivia rodrigo" + "&start=" + start;
-           Http.open("GET", url);
-           Http.send();
-           Http.onreadystatechange = (e) => {
-             var ret = Http.responseText;
-             document.getElementById('image').innerHTML = ret;
-             if (Http.readyState == 4 && Http.status == 200) {
-               var obj = JSON.parse(ret);
-              
-                 var img = obj.items[0].link;
-         
-         
-                 location.href = img;
-               
-            
-             }
-           }
-         }
-         
-      </script>
-   </body>
+
+  <body onload="getImage()">
+    <div id="image"></div>
+    <script>
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+          vars[key] = value;
+        });
+        return vars;
+      }
+
+      function getImage() {
+
+        var vars = getUrlVars();
+        var q = vars['q'];
+        var start = Math.floor(Math.random() * 500);
+        const Http = new XMLHttpRequest();
+        const url = "https://www.googleapis.com/customsearch/v1?cx=002432359258516468809:no3xkeywlwu&key=AIzaSyDoG9RMiKfEnhQxa-nrWknr6GwpAlK8OWc&searchType=image&num=1&q=olivia rodrigo" + "&start=" + start;
+        Http.open("GET", url);
+        Http.send();
+        Http.onreadystatechange = (e) => {
+          var ret = Http.responseText;
+          document.getElementById('image').innerHTML = ret;
+          if (Http.readyState == 4 && Http.status == 200) {
+            var obj = JSON.parse(ret);
+
+            var img = obj.items[0].link;
+
+
+            location.href = img;
+
+
+          }
+        }
+      }
+
+    </script>
+  </body>
+
 </html>
