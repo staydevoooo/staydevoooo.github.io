@@ -1,54 +1,40 @@
 <html>
-
-  <body onload="getImage()">
-    <div id="image"></div>
-    <script>
-      function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-          vars[key] = value;
-        });
-        return vars;
-      }
-
-      function getImage() {
-        if (document.getElementById('image').src != "loading.gif") document.getElementById('image').src = "loading.gif";
-        var vars = getUrlVars();
-        var q = vars['q'];
-        var start = Math.floor(Math.random() * 500);
-        const Http = new XMLHttpRequest();
-        const url = "https://www.googleapis.com/customsearch/v1?cx=002432359258516468809:no3xkeywlwu&key=AIzaSyDETgCxyt2hjw7w0UewabTWKKvrQ9cy7VQ&searchType=image&num=1&q=olivia rodrigo" + "&start=" + start;
-        Http.open("GET", url);
-        Http.send();
-        Http.onreadystatechange = (e) => {
-          var ret = Http.responseText;
-          document.getElementById('image').innerHTML = ret;
-          if (Http.readyState == 4 && Http.status == 200) {
-            var obj = JSON.parse(ret);
-            if (obj.queries.request[0].totalResults == "0") {
-              document.getElementById('message').innerHTML = "No results found.";
-              document.getElementById('image').src = 'https://www.computerhope.com/jargon/e/error.gif';
-            } else {
-              var img = obj.items[0].link;
-              document.getElementById('image').src = img;
-
-
-              location.href = img;
-            }
-          } else if (Http.status != 200) {
-            console.log('Failed to fetch image. Status = ' + Http.status + ' Response:\n' + ret);
-            document.getElementById('image').src = 'https://www.computerhope.com/jargon/e/error.gif';
-            var obj = JSON.parse(ret);
-            if (obj.hasOwnProperty('error')) {
-              document.getElementById('message').innerHTML = "Error Message:\n" + obj.error.message;
-            } else {
-              console.log("No error message found.");
-            }
-          }
-        }
-      }
-
-    </script>
-  </body>
-
+   <body onload="getImage()">
+      <div id="image"></div>
+      <script>
+         function getUrlVars() {
+           var vars = {};
+           var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+             vars[key] = value;
+           });
+           return vars;
+         }
+         
+         function getImage() {
+           
+           var vars = getUrlVars();
+           var q = vars['q'];
+           var start = Math.floor(Math.random() * 500);
+           const Http = new XMLHttpRequest();
+           const url = "https://www.googleapis.com/customsearch/v1?cx=002432359258516468809:no3xkeywlwu&key=AIzaSyDETgCxyt2hjw7w0UewabTWKKvrQ9cy7VQ&searchType=image&num=1&q=olivia rodrigo" + "&start=" + start;
+           Http.open("GET", url);
+           Http.send();
+           Http.onreadystatechange = (e) => {
+             var ret = Http.responseText;
+             document.getElementById('image').innerHTML = ret;
+             if (Http.readyState == 4 && Http.status == 200) {
+               var obj = JSON.parse(ret);
+              
+                 var img = obj.items[0].link;
+         
+         
+                 location.href = img;
+               
+            
+             }
+           }
+         }
+         
+      </script>
+   </body>
 </html>
