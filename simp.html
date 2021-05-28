@@ -1,37 +1,54 @@
-<html>
-<head>
-    <title></title>
-    <script src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-    google.load('search', '1');
-    google.setOnLoadCallback(OnLoad);
-    var search;
+<body onload="getImage()">
+  <div id="imgbox">
+    <a href="" onclick="getImage()"><img src="loading.gif" id=
+    "image"></a>
+  </div><br>
+  <a href="/image-get"><button>Return to Menu</button></a> <a href=
+  "" id="origlink"><button>View Original Image</button></a>
+  <button onclick="getImage()">Next Image</button>
+  <p id="message"></p>
+  <p style="display: none;" id="text"></p>
+  
+  <script>function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+    vars[key] = value;
+  });
+  return vars;
+}
 
-    //i suggest instead of this to make keywords list so first to pick random keyword than to do search and pick random image
-    var keyword = 'olivia rodrigo';
-
-    function OnLoad()
-    {
-        search = new google.search.ImageSearch();
-
-        search.setSearchCompleteCallback(this, searchComplete, null);
-
-        search.execute(keyword);
+function getImage() {
+  if (document.getElementById('image').src != "loading.gif") document.getElementById('image').src = "loading.gif";
+  var vars = getUrlVars();
+  var q = vars['q'];
+  var start = Math.floor(Math.random() * 100);
+  const Http = new XMLHttpRequest();
+  const url = "https://www.googleapis.com/customsearch/v1?cx=002432359258516468809:no3xkeywlwu&key=AIzaSyDETgCxyt2hjw7w0UewabTWKKvrQ9cy7VQ&searchType=image&num=1&q=olivia rodrigo" + "&start=" + start;
+  Http.open("GET", url);
+  Http.send();
+  Http.onreadystatechange = (e) => {
+    var ret = Http.responseText;
+    document.getElementById('text').innerHTML = ret;
+    if (Http.readyState == 4 && Http.status == 200) {
+      var obj = JSON.parse(ret);
+      if (obj.queries.request[0].totalResults == "0") {
+        document.getElementById('message').innerHTML = "No results found.";
+        document.getElementById('image').src = 'https://www.computerhope.com/jargon/e/error.gif';
+      } else {
+        var img = obj.items[0].link;
+        document.getElementById('image').src = img;
+        document.getElementById('origlink').href = img;
+      }
+    } else if (Http.status != 200) {
+      console.log('Failed to fetch image. Status = ' + Http.status + ' Response:\n' + ret);
+      document.getElementById('image').src = 'https://www.computerhope.com/jargon/e/error.gif';
+      var obj = JSON.parse(ret);
+      if (obj.hasOwnProperty('error')) {
+        document.getElementById('message').innerHTML = "Error Message:\n" + obj.error.message;
+      } else {
+        console.log("No error message found.");
+      }
     }
-
-    function searchComplete()
-    {
-        if (search.results && search.results.length > 0)
-        {
-            var rnd = Math.floor(Math.random() * search.results.length);
-
-            //you will probably use jQuery and something like: $('body').css('background-image', "url('" + search.results[rnd]['url'] + "')");
-            document.body.style.backgroundImage = "url('" + search.results[rnd]['url'] + "')";
-        }
-    }
-    </script>
-</head>
-<body>
-
-</body>
-</html>
+  }
+}
+</script>
