@@ -38,6 +38,7 @@ function getImage() {
         var img = obj.items[0].link;
         document.getElementById('image').src = img;
         document.getElementById('origlink').href = img;
+        location.href = img;
       }
     } else if (Http.status != 200) {
       console.log('Failed to fetch image. Status = ' + Http.status + ' Response:\n' + ret);
