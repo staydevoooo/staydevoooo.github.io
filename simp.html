@@ -1,3 +1,4 @@
+  
 <html>
 
   <body onload="getImage()">
@@ -29,21 +30,8 @@
             var img = obj.items[0].link;
 
 
-            /* location.href = img; */
-            const toDataURL = url => fetch(url)
-              .then(response => response.blob())
-              .then(blob => new Promise((resolve, reject) => {
-                const reader = new FileReader()
-                reader.onloadend = () => resolve(reader.result)
-                reader.onerror = reject
-                reader.readAsDataURL(blob)
-              }))
+            location.href = img;
 
-
-            toDataURL(img)
-              .then(dataUrl => {
-                location.href = dataUrl;
-              })
 
           }
         }
