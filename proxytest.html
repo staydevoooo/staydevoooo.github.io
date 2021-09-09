@@ -393,7 +393,14 @@
          </footer>
       </div>
       <!-- inject:js -->
-     
+      <script>
+         function getInputValue(){
+             // Selecting the input element and get its value 
+             var inputVal = "https://devoooo-proxy.herokuapp.com/proxy/" + document.getElementById("myInput").value ;
+             // Displaying the value
+             window.open(inputVal)
+         }
+      </script>
       <script defer src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
       <script src="assets/vendor/modernizr/modernizr.js"></script>
       <script src="assets/vendor/jquery/jquery-1.10.2.min.js"></script>
