@@ -9,23 +9,6 @@ body {
 	margin: 0
 }
 
-.wrapper {
-  box-sizing: border-box!important;
-  position: relative!important;
-  padding-bottom: 1em!important; 
-  min-height: 100%!important;
-}
-
-html,
-body {
-  margin: 0!important;
-  height: 100%!important;
-}
-
-footer {
-  position: absolute!important;
-  bottom: 0!important;
-}
 
 @media screen and (min-width:600px) {
 	zoom: 75%!important;
@@ -35,15 +18,6 @@ footer {
 	color: #bd3b36!important;
 }
 
-html body {
-	font-family: bookman, bookman, sans-serif!important;
-	font-size: 12px!important;
-}
-
-#container {
-	margin: 0 auto!important;
-	margin-top: 7%!important;
-}
 
 @media screen and (max-width: 600px) {
 	#container {
@@ -80,22 +54,7 @@ hr {
 	margin-top: 0!important;
 }
 
-a.button1 {
-	padding: 1.4em!important;
-	margin: 0 .3em .3em 0!important;
-	text-decoration: none!important;
-	font-family: comfort, sans-serif!important;
-	font-weight: 700!important;
-	color: #fff!important;
-	text-align: center!important;
-	transition: all .2s!important;
-	margin-top: 8px!important;
-	float: right!important;
-}
 
-a.button1:hover {
-	color: #bd3b36
-}
 
 @media screen and (max-width:600px) {
 	a.button1 {
