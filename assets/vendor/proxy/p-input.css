@@ -32,51 +32,6 @@ form h1 {
 	padding: 20px!important;
 }
 
-input {
-	margin: 40px 25px!important;
-	width: 200px!important;
-	display: block!important;
-	border: none!important;
-	padding: 10px 0!important;
-	border-bottom: solid 0 #120a21!important;
-	transition: all .3s cubic-bezier(.64, .09, .08, 1)!important;
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #120a21 4%)!important;
-	background-position: -200px 0!important;
-	background-size: 200px 100%!important;
-	background-repeat: no-repeat!important;
-	color: #fff!important;
-}
-
-input:focus,
-input:valid {
-	box-shadow: none!important;
-	outline: none!important;
-	background-position: 0 0!important;
-}
-
-input:focus::-webkit-input-placeholder,
-input:valid::-webkit-input-placeholder {
-	color: #120a21!important;
-	font-size: 11px!important;
-	transform: translateY(-20px)!important;
-	visibility: visible!important
-}
-
-button {
-	border: none!important;
-	background: #eb9191!important;
-	cursor: pointer!important;
-	border-radius: 3px!important;
-	padding: 6px!important;
-	width: 200px!important;
-	color: #fff!important;
-	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)!important;
-}
-
-button:hover {
-	transform: translateY(-3px)!important;
-	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .2)!important
-}
 
 .follow {
 	width: 42px!important;
@@ -113,73 +68,5 @@ body {
 	overflow: hidden!important;
 }
 
-input,
-select,
-textarea {
-	color: #fffff!important;
-}
 
-textarea:focus,
-input:focus {
-	color: #fffff!important;
-}
 
-// colors
-$input-background: rgba(57, 63, 84, 0.8);
-$input-text-inactive: #7881A1;
-$input-text-active: #BFD2FF;
-
-// gradient animation
-@keyframes gradient { 
-  0%{background-position:0 0}
-  100%{background-position:100% 0}
-}
-
-.webflow-style-input {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  border-radius: 2px;
-  padding: 1.4rem 2rem 1.6rem;
-  background: $input-background;
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: 999;
-    height: 2px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background-position: 0% 0%;
-    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
-    background-size: 500% auto;
-    animation: gradient 3s linear infinite;
-  }
-}
-
-.webflow-style-input input {
-  flex-grow: 1;
-  color: $input-text-active;
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  vertical-align: middle;
-  &::-webkit-input-placeholder {
-    color: $input-text-inactive;
-  }
-}
-
-.webflow-style-input button {
-  color:  $input-text-inactive;
-  font-size: 2.4rem;
-  line-height: 2.4rem;
-  vertical-align: middle;
-  transition: color .25s;
-  &:hover {
-    color: $input-text-active;
-  }
-}
