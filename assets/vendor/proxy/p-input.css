@@ -1,11 +1,4 @@
-h1,
-input::-webkit-input-placeholder,
-button {
-	font-family: roboto, sans-serif!important;
-	transition: all .3s ease-in-out!important;
-	text-align: center!important;
-	align-content: center!important;
-}
+
 
 h1 {
 	height: 100px!important;
@@ -18,19 +11,7 @@ h1 {
 	box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .2)!important;
 }
 
-form {
-	box-sizing: border-box!important;
-	width: 260px!important;
-	margin: 80px auto 0!important;
-	box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, .2)!important;
-	padding-bottom: 0px!important;
-	border-radius: 3px!important;
-}
 
-form h1 {
-	box-sizing: border-box!important;
-	padding: 20px!important;
-}
 
 
 .follow {
