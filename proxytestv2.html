@@ -43,115 +43,33 @@
       <link rel="stylesheet" href="assets/css/style.css">
       <link rel="stylesheet" href="assets/css/default-theme.css">
       <style>
-html {
-	box-sizing: border-box;
-	font-size: 10px;
-}
-
-*,
-*:before,
-*:after {
-	box-sizing: inherit;
-}
-
-body,
-ul,
-li {
-	margin: 0;
-	padding: 0;
-}
-
-li {
-	list-style: none;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-top: 0;
-}
-
-a {
-	text-decoration: none;
-}
-
-input {
-	border-style: none;
-	background: transparent;
-	outline: none;
-}
-
-button {
-	padding: 0;
-	background: none;
-	border: none;
-	outline: none;
-}
-
-$input-background: rgba(57, 63, 84, 0.8);
-$input-text-inactive: #7881A1;
-$input-text-active: #BFD2FF;
-@keyframes gradient {
-	0% {
-		background-position: 0 0
-	}
-	100% {
-		background-position: 100% 0
-	}
-}
-
-.webflow-style-input {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	max-width: 400px;
-	margin: 0 auto;
-	border-radius: 2px;
-	padding: 1.4rem 2rem 1.6rem;
-	background: $input-background;
-	&:after {
-		content: "";
-		position: absolute;
-		left: 0px;
-		right: 0px;
-		bottom: 0px;
-		z-index: 999;
-		height: 2px;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		background-position: 0% 0%;
-		background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
-		background-size: 500% auto;
-		animation: gradient 3s linear infinite;
-	}
-}
-
-.webflow-style-input input {
-	flex-grow: 1;
-	color: $input-text-active;
-	font-size: 1.8rem;
-	line-height: 2.4rem;
-	vertical-align: middle;
-	&::-webkit-input-placeholder {
-		color: $input-text-inactive;
-	}
-}
-
-.webflow-style-input button {
-	color: $input-text-inactive;
-	font-size: 2.4rem;
-	line-height: 2.4rem;
-	vertical-align: middle;
-	transition: color .25s;
-	&:hover {
-		color: $input-text-active;
-	}
-}
+         .tooltip{
+         display: inline;
+         position: relative;
+         }
+         .tooltip:hover:after{
+         background: #333;
+         background: rgba(0,0,0,.8);
+         border-radius: 5px;
+         bottom: 26px;
+         color: #fff;
+         content: attr(title);
+         left: 20%;
+         padding: 5px 15px;
+         position: absolute;
+         z-index: 98;
+         width: 220px;
+         }
+         .tooltip:hover:before{
+         border: solid;
+         border-color: #333 transparent;
+         border-width: 6px 6px 0 6px;
+         bottom: 20px;
+         content: "";
+         left: 50%;
+         position: absolute;
+         z-index: 99;
+         }
       </style>
       <!-- endinject -->
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -210,21 +128,17 @@ $input-text-active: #BFD2FF;
                   <div class="row">
                      <div class="m-bot-80 inline-block">
                         <!--title-->
-                        <colorbox style="display:inline-block" id="black" class="square">
                         <div class="heading-title-alt text-center">
                            <form id="urlSearch" method="GET" onsubmit="">
                            <h4 class="text-uppercase" style="color:white;">Luna</h4>
-                           <input type="text" placeholder="Enter URL..." id="myInput" required="">
-                           <button style="text-align:center;" onclick="getInputValue();">Submit</button>
-                           </form>
-                        </div>
-                        
+
   <div class="webflow-style-input">
-    <input class="" type="email" placeholder="What's your email?"></input>
-    <button type="submit"><i class="fa fa-youtube"></i></button>
+    <input class="" type="text" placeholder="Enter URL..." id="myInput" required="">
+    <button onclick="getInputValue();"><ion-icon style="margin:0px;padding:0px;" name="arrow-forward-outline"></ion-icon></button>
   </div>
 
-                        </colorbox>
+                           </form>
+                        </div>
                         <!--title-->
                      </div>
                      </div>
@@ -267,7 +181,8 @@ $input-text-active: #BFD2FF;
              window.open(inputVal)
          }
       </script>
-      <script defer src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
+      <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+      <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
       <script src="assets/vendor/modernizr/modernizr.js"></script>
       <script src="assets/vendor/jquery/jquery-1.10.2.min.js"></script>
       <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -288,7 +203,7 @@ $input-text-active: #BFD2FF;
       <script src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
       <script src="assets/vendor/parallax-js/parallax.min.js"></script>
       <script src="assets/vendor/smooth/smooth.js"></script>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script src="assets/vendor/sticky/jquery.sticky.min.js"></script>
       <script src="assets/vendor/touchspin/touchspin.js"></script>
       <script src="assets/vendor/typist/typist.js"></script>
