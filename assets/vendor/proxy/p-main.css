@@ -376,7 +376,7 @@ html {
 	 border-bottom-left-radius: 2px !important;
 	 border-bottom-right-radius: 2px !important;
 	 background-position: 0% 0% !important;
-	 background: linear-gradient(to right, #b294ff, #57e6e6, #feffb8, #57e6e6, #b294ff, #57e6e6) !important;
+	 background: linear-gradient(to right, #b294ff, #eb9191, #feffb8, #eb9191, #b294ff, #eb9191) !important;
 	 background-size: 500% auto !important;
 	 animation: gradient 3s linear infinite !important;
 }
