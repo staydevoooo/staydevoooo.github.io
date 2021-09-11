@@ -363,7 +363,7 @@ html {
 	 margin: 0 auto !important;
 	 border-radius: 2px !important;
 	 padding: 1.4rem 2rem 1.6rem !important;
-	 background: rgba(57, 63, 84, 0.95) !important !important;
+	 background: rgba(57, 63, 84, 0.95) !important;
 }
  .webflow-style-input:after {
 	 content: "" !important;
@@ -396,8 +396,14 @@ html {
 	 line-height: 2.4rem !important;
 	 vertical-align: middle !important;
 	 transition: color 0.25s !important;
+	 padding-bottom: 40px !important;
 }
  .webflow-style-input button:hover {
-	 color: #bfd2ff !important !important;
+	 color: #bfd2ff !important;
 }
  
+.luna {
+	animation: gradient 3s linear infinite !important;
+	font-family: 'Sansita', sans-serif !important;
+	padding-top: 40px !important;
+}
