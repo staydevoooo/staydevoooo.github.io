@@ -348,10 +348,10 @@ html {
 }
  @keyframes gradient {
 	 0% {
-		 background-position: 0 0;
+		 background-position: 0 0 !important;
 	}
 	 100% {
-		 background-position: 100% 0;
+		 background-position: 100% 0 !important;
 	}
 }
  .webflow-style-input {
