@@ -360,7 +360,9 @@ html {
 	 flex-direction: row !important;
 	 width: 100% !important;
 	 max-width: 400px !important;
-	 margin: 0 auto !important;
+	 margin-left: 0 auto !important;
+	 margin-right: 0 auto !important;
+	 margin-top: 0 auto !important;
 	 border-radius: 2px !important;
 	 padding: 1.4rem 2rem 1.6rem !important;
 	 background: rgba(57, 63, 84, 0.95) !important;
@@ -386,6 +388,7 @@ html {
 	 font-size: 1.8rem !important;
 	 line-height: 2.4rem !important;
 	 vertical-align: middle !important;
+	 padding-bottom: 40px !important;
 }
  .webflow-style-input input::-webkit-input-placeholder {
 	 color: #7881a1 !important !important;
