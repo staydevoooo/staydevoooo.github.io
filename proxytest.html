@@ -110,10 +110,10 @@
                         <div class="banner-title">
                            <colorbox style="display:inline-block;padding-bottom:15px;" id="black" class="square">
                               <h2 style="font-family: 'Sansita', sans-serif!important;padding-top:40px!important;padding-bottom:10px!important;-webkit-animation: gradient 3s linear infinite!important;" class="light-txt m-bot-10 inline-block">Luna</h2>
-                              <form id="urlSearch" method="GET" onsubmit="">
+                              <form id="urlSearch" method="GET">
                                  <div class="webflow-style-input">
-                                 <input type="text" placeholder="Enter URL..." id="myInput" autocomplete="new-password" required>
-                                 <button onclick="getInputValue();">
+                                 <input type="text" placeholder="Enter URL..." id="inputURL" autocomplete="new-password" required>
+                                 <button onclick="getURLValue();">
                                     <ion-icon name="arrow-forward-outline"></ion-icon>
                                  </button>
                                  </div>
@@ -403,9 +403,9 @@
       </div>
       <!-- inject:js -->
       <script>
-         function getInputValue(){
+         function getURLValue(){
              // Selecting the input element and get its value 
-             var inputVal = "https://devoooo-proxy.herokuapp.com/proxy/" + document.getElementById("myInput").value ;
+             var inputVal = "https://devoooo-proxy.herokuapp.com/proxy/" + document.getElementById("inputURL").value ;
              // Displaying the value
              window.open(inputVal)
          }
