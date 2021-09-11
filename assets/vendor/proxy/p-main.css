@@ -404,9 +404,4 @@ html {
  .webflow-style-input button:hover {
 	 color: #bfd2ff !important;
 }
- 
-h2 #luna {
-	animation: gradient 3s linear infinite !important;
-	font-family: 'Sansita', sans-serif !important;
-	padding-top: 40px !important;
-}
+
