@@ -397,7 +397,6 @@ html {
 	 line-height: 2.4rem !important;
 	 vertical-align: middle !important;
 	 transition: color 0.25s !important;
-	 padding-bottom: 40px !important;
 }
  .webflow-style-input button:hover {
 	 color: #bfd2ff !important;
