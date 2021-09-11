@@ -363,7 +363,7 @@ html {
 	 margin: 0 auto;
 	 border-radius: 2px !important;
 	 padding: 1.4rem 2rem 1.6rem !important;
-	 background: rgba(57, 63, 84, 0.95) !important;
+	 background: rgba(57, 63, 84, 0.8) !important;
 }
  .webflow-style-input:after {
 	 content: "" !important;
@@ -379,7 +379,6 @@ html {
 	 background: linear-gradient(to right, #b294ff, #eb9191, #feffb8, #eb9191, #b294ff, #eb9191) !important;
 	 background-size: 500% auto !important;
 	 animation: gradient 3s linear infinite !important;
-	 margin-bottom: 40px !important;
 
 }
  .webflow-style-input input {
