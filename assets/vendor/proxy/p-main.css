@@ -363,7 +363,7 @@ html {
 	 margin: 0 auto;
 	 border-radius: 2px !important;
 	 padding: 1.4rem 2rem 1.6rem !important;
-	 background: rgba(57, 63, 84, 0.8) !important;
+	 background: rgba(0, 0, 0, .33) !important;
 }
  .webflow-style-input:after {
 	 content: "" !important;
