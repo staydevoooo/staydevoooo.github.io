@@ -24,19 +24,21 @@ iframe {
 .game-icn:hover>:not(.game-name, .game-text) {
 	filter: blur(2.2px);
 	-webkit-filter: blur(2.2px);
-	transform: scale(1.1)
 }
 
 .game-icn:hover {
-	-ms-transform: scale(1.2);
-	-webkit-transform: scale(1.2);
-	transform: scale(1.2);
+	-ms-transform: scale(1.12);
+	-webkit-transform: scale(1.12);
+	transform: scale(1.12);
+	z-index: 999;
+        position: absolute;
 }
 
 .game-icn {
 	position: relative;
 	padding: 0;
-	width: 140px;
+	width: 120px;
+	height: 120px;
 	display: block;
 	cursor: pointer;
 	overflow: hidden;
@@ -49,10 +51,10 @@ iframe {
 	user-select: none
 }
 
-.game-txt {
+.game-txt .game-name {
 	opacity: 0;
 	font-size: 12px;
-	font-family: Baloo, cursive;
+	font-family: Sansita, sans-serif;
 	text-shadow: 2px 2px 40px #000;
 	position: absolute;
 	top: 0;
@@ -62,8 +64,8 @@ iframe {
 	width: 140px;
 	height: 140px;
 	text-align: center;
-	filter: blur(0);
-	-webkit-filter: blur(0)
+	filter: blur(0) !important;
+	-webkit-filter: blur(0) !important;
 }
 
 .game-icn .game-txt:hover {
