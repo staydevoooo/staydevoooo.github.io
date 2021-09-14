@@ -61,6 +61,7 @@ img.game-img {
 	font-family: Sansita, sans-serif;
 	text-shadow: 2px 2px 40px #000;
 	position: absolute;
+	padding-top: 60px;
 	top: 0;
 	left: 0;
 	color: #fff;
@@ -68,22 +69,13 @@ img.game-img {
 	width: 140px;
 	height: 140px;
 	text-align: center;
+	z-index: 999;
 	filter: blur(0) !important;
 	-webkit-filter: blur(0) !important;
 }
 
-.game-icn .game-txt:hover {
-	opacity: 1
-}
-
-.game-icn .game-txt .game-name {
-	height: 0;
-	opacity: 1
-}
-
-.game-icn .game-txt:hover .game-name {
-	opacity: 1;
-	padding-top: 60px
+.game-icn .game-txt:hover .game-name:hover {
+	opacity: 1 !important;
 }
 
 #tb-preloader {
