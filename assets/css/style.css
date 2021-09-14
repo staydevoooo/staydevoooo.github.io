@@ -41,8 +41,8 @@ img.game-img {
 .game-icn {
 	position: relative;
 	padding: 0;
-	width: 120px;
-	height: 120px;
+	width: 140px;
+	height: 140px;
 	display: block;
 	cursor: pointer;
 	overflow: hidden;
@@ -65,8 +65,8 @@ img.game-img {
 	left: 0;
 	color: #fff;
 	background-color: rgba(0, 0, 0, .4);
-	width: 120px;
-	height: 120px;
+	width: 140px;
+	height: 140px;
 	text-align: center;
 	filter: blur(0) !important;
 	-webkit-filter: blur(0) !important;
