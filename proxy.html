@@ -115,9 +115,10 @@
                                        <div data-aos="zoom-in" style="float: left; width: 810px; padding-left: 30px;">
                                           <colorbox style="display:inline-block" id="black" class="square">
                                              <h3 style="font-family: 'Sansita', sans-serif;font-size:32px;color:white; text-align:center;padding-top:45px;">Luna</h3>
-                                             <form id="urlSearch" method="GET" style="margin-top:80px;margin-bottom:75px;">
+                                             <form autocomplete="off" method="GET" action="" id="urlSearch" style="margin-top:80px;margin-bottom:75px;">
+                                                <input autocomplete="false_off1" name="hidden" type="text" style="display:none!important;">
                                                 <div class="webflow-style-input">
-                                                   <input type="text" placeholder="Enter URL..." id="inputURL" autocomplete="none" required />
+                                                   <input type="text" placeholder="Enter URL..." id="inputURL" autocomplete="false_off1" required/>
                                                    <button onclick="getURLValue();">
                                                       <ion-icon name="arrow-forward-outline"></ion-icon>
                                                    </button>
