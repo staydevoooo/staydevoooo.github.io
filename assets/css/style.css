@@ -5559,6 +5559,11 @@ address p {
 	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
+  	min-height: 100%;
+	position: fixed; 
+	min-width: 100%;
+  	left: 0; 
+ 	top: 0; 
 }
 
 .banner-01 {
