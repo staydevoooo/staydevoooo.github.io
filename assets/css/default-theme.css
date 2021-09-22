@@ -1,6 +1,7 @@
 /*------------------------------------------------------------------
 Default theme  Stylesheet
 -------------------------------------------------------------------*/
+
 html::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
 	background-color: #000
@@ -84,7 +85,7 @@ img.game-img {
 	bottom: 0;
 	left: 0;
 	display: block;
-	background: #fff
+	background: #222
 }
 
 .tb-preloader-wave {
