@@ -107,7 +107,7 @@ img.game-img {
 	-webkit-animation: preloader-wave 1.6s linear infinite;
 	animation: preloader-wave 1.6s linear infinite;
 	border-radius: 50%;
-	background: #222
+	background: #eb9191
 }
 
 .tb-preloader-wave:after {
