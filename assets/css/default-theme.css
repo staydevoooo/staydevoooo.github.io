@@ -1,6 +1,145 @@
 /*------------------------------------------------------------------
 Default theme  Stylesheet
 -------------------------------------------------------------------*/
+html::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #000
+}
+
+html::-webkit-scrollbar {
+	width: 6px;
+	background-color: #000
+}
+
+html::-webkit-scrollbar-thumb {
+	background-color: #eb9191
+}
+
+iframe {
+	border: 0
+}
+
+.game-icn:hover>:not(.game-txt) {
+	filter: blur(2.2px);
+	-webkit-filter: blur(2.2px);
+}
+
+.game-icn:hover {
+	-ms-transform: scale(1.12);
+	-webkit-transform: scale(1.12);
+	transform: scale(1.12);
+	z-index: 999;
+        position: relative;
+}
+img.game-img {
+	width: 140px;
+	height: 140px;
+}
+
+.game-icn {
+	position: relative;
+	padding: 0;
+	width: 140px;
+	height: 140px;
+	display: block;
+	cursor: pointer;
+	overflow: hidden;
+	transition: transform .22s;
+	border-radius: 26px;
+	margin: 5px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+.game-txt .game-name {
+	opacity: 0;
+	font-size: 12px;
+	font-family: Sansita, sans-serif;
+	text-shadow: 2px 2px 40px #000;
+	position: absolute;
+	padding-top: 60px;
+	top: 0;
+	left: 0;
+	color: #fff;
+	background-color: rgba(0, 0, 0, .4);
+	width: 140px;
+	height: 140px;
+	text-align: center;
+	z-index: 999;
+	filter: blur(0) !important;
+	-webkit-filter: blur(0) !important;
+}
+
+.game-icn .game-txt:hover .game-name:hover {
+	opacity: 1 !important;
+}
+
+#tb-preloader {
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	background: #fff
+}
+
+.tb-preloader-wave {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px
+}
+
+.tb-preloader-wave:after,
+.tb-preloader-wave:before {
+	position: absolute;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	content: "";
+	-webkit-animation: preloader-wave 1.6s linear infinite;
+	animation: preloader-wave 1.6s linear infinite;
+	border-radius: 50%;
+	background: #222
+}
+
+.tb-preloader-wave:after {
+	-webkit-animation-delay: -.8s;
+	animation-delay: -.8s
+}
+
+@-webkit-keyframes preloader-wave {
+	0% {
+		-webkit-transform: scale(0, 0);
+		transform: scale(0, 0);
+		opacity: .5
+	}
+	100% {
+		-webkit-transform: scale(1, 1);
+		transform: scale(1, 1);
+		opacity: 0
+	}
+}
+
+@keyframes preloader-wave {
+	0% {
+		-webkit-transform: scale(0, 0);
+		transform: scale(0, 0);
+		opacity: .5
+	}
+	100% {
+		-webkit-transform: scale(1, 1);
+		transform: scale(1, 1);
+		opacity: 0
+	}
+}
+
 ::-moz-selection {
     color: #fff;
     background: #000
