@@ -606,24 +606,24 @@ var enemies = [
 
 	// level 10
 	[
-		new simpleEnemy(290, 350, 260, 260, 1.5, 0),
-		new simpleEnemy(350, 290, 300, 300, 1.5, 0),
-		new simpleEnemy(290, 350, 340, 340, 1.5, 0),
-		new simpleEnemy(210, 270, 340, 340, 1.5, 0),
-		new simpleEnemy(270, 210, 380, 380, 1.5, 0),
-		new simpleEnemy(210, 270, 420, 420, 1.5, 0),
-		new simpleEnemy(300, 300, 410, 470, 0, 1.5),
-		new simpleEnemy(340, 340, 470, 410, 0, 1.5),
-		new simpleEnemy(380, 380, 410, 470, 0, 1.5),
-		new simpleEnemy(420, 420, 470, 410, 0, 1.5),
-		new simpleEnemy(460, 460, 410, 470, 0, 1.5),
-		new simpleEnemy(500, 500, 470, 410, 0, 1.5),
-		new simpleEnemy(450, 510, 260, 260, 1.5, 0),
-		new simpleEnemy(510, 450, 300, 300, 1.5, 0),
-		new simpleEnemy(450, 510, 340, 340, 1.5, 0),
-		new simpleEnemy(530, 590, 340, 340, 1.5, 0),
-		new simpleEnemy(590, 530, 380, 380, 1.5, 0),
-		new simpleEnemy(530, 590, 420, 420, 1.5, 0)
+	//	new simpleEnemy(290, 350, 260, 260, 1.5, 0),
+	//	new simpleEnemy(350, 290, 300, 300, 1.5, 0),
+	//	new simpleEnemy(290, 350, 340, 340, 1.5, 0),
+	//	new simpleEnemy(210, 270, 340, 340, 1.5, 0),
+	//	new simpleEnemy(270, 210, 380, 380, 1.5, 0),
+	//	new simpleEnemy(210, 270, 420, 420, 1.5, 0),
+	//	new simpleEnemy(300, 300, 410, 470, 0, 1.5),
+	//	new simpleEnemy(340, 340, 470, 410, 0, 1.5),
+	//	new simpleEnemy(380, 380, 410, 470, 0, 1.5),
+	//	new simpleEnemy(420, 420, 470, 410, 0, 1.5),
+	//	new simpleEnemy(460, 460, 410, 470, 0, 1.5),
+	//	new simpleEnemy(500, 500, 470, 410, 0, 1.5),
+	//	new simpleEnemy(450, 510, 260, 260, 1.5, 0),
+	//	new simpleEnemy(510, 450, 300, 300, 1.5, 0),
+	//	new simpleEnemy(450, 510, 340, 340, 1.5, 0),
+	//	new simpleEnemy(530, 590, 340, 340, 1.5, 0),
+	//	new simpleEnemy(590, 530, 380, 380, 1.5, 0),
+	//	new simpleEnemy(530, 590, 420, 420, 1.5, 0)
 	],
 	
 	// level 11
