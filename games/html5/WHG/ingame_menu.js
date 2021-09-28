@@ -45,13 +45,13 @@ function drawIGMenu() {
             canvas.fillText("MAIN MENU", CANVAS_WIDTH / 2, IG_BUTTONS_TOP + IG_BTN_SPACE);
 
             // level select
-            if (onButton("ig_levelSelect"))
+            /* if (onButton("ig_levelSelect"))
                 canvas.fillStyle = BARS_BUTTON_HOVER_COLOR;
             else
                 canvas.fillStyle = "white";
             canvas.font = "Bold " + IG_BTN_TEXT_SIZE + "px Arial";
             canvas.textAlign = "center";
-            canvas.fillText("LEVEL SELECT", CANVAS_WIDTH / 2, IG_BUTTONS_TOP + IG_BTN_SPACE * 2);
+            canvas.fillText("LEVEL SELECT", CANVAS_WIDTH / 2, IG_BUTTONS_TOP + IG_BTN_SPACE * 2); */
 
             // change player color
             if (onButton("ig_playerColor")) {
@@ -151,10 +151,10 @@ function drawIGMenu() {
             canvas.fillText("MAIN MENU", cwh(CANVAS_WIDTH / 2) + os.x, cwh(IG_BUTTONS_TOP + IG_BTN_SPACE) + os.y);
 
             // level select
-            canvas.fillStyle = "white";
+            /* canvas.fillStyle = "white";
             canvas.font = "Bold " + cwh(IG_BTN_TEXT_SIZE) + "px Arial";
             canvas.textAlign = "center";
-            canvas.fillText("LEVEL SELECT", cwh(CANVAS_WIDTH / 2) + os.x, cwh(IG_BUTTONS_TOP + IG_BTN_SPACE * 2) + os.y);
+            canvas.fillText("LEVEL SELECT", cwh(CANVAS_WIDTH / 2) + os.x, cwh(IG_BUTTONS_TOP + IG_BTN_SPACE * 2) + os.y); */
 
             // change player color
             canvas.fillStyle = "rgba(" + player.redFill + ", " + player.greenFill + ", " + player.blueFill + ", 1)";
