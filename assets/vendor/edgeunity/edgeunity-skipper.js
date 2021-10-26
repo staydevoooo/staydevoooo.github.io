@@ -93,6 +93,7 @@ function seekanywhere_limiter(e) {
 }
 function init() {
     null == window.edjskipper ? (injectoverlay(), audio_blocker(), (window.edjskipper = "edgenuity-skipper by wackery"), console.log("edgenuity-skipper now active. Version 2")) : console.log("already loaded. skipping");
+    alert("Edgeunity Script Activated (Shift + \ to open GUI)");
 }
 (window.API = document.querySelector("#stageFrame").contentWindow.API),
     (window.skipperSettings = {}),
