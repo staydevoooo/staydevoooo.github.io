@@ -52,9 +52,7 @@ function injectoverlay() {
             "|" == e.key && overlayon();
         });
 }
-audio_skip_update(this,\"entry\");
-audio_skip_update(this,\"hint\");
-audio_skip_update(this,\"exit\");
+
 function audio_skip_update(e, t) {
     skipperSettings.skip[t] = e.checked;
 }
@@ -105,3 +103,6 @@ function init() {
     })),
     init();
     alert("Edgeunity Script Activated (Shift + \ to open GUI)");
+    audio_skip_update(this,\"entry\");
+    audio_skip_update(this,\"hint\");
+    audio_skip_update(this,\"exit\");
