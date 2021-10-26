@@ -40,7 +40,7 @@ function injectoverlay() {
         $("#skipper-overlay").append($('<div id="skipper-text">edgenuity-skipper<br /></div>')),
         $("#skipper-text").append($("<input id='autoplay-checkbox' type='checkbox' onchange='autoplay_checkbox()'></input><label for='autoplay-checkbox'>Autoplay</label><br />")),
         ($("#autoplay-checkbox")[0].checked = !0),
-        $("#skipper-text").append($("<input id='intro-skip' type='checkbox' onchange='audio_skip_update(this,\"entry\")'></input><label for='intro-skip'>Skip intro audio</label>")),
+        $("#skipper-text").append($("<input id='intro-skip' type='checkbox' onchange='audio_skip_update(this,\"entry\");alert(window.skipperSettings);'></input><label for='intro-skip'>Skip intro audio</label>")),
         ($("#intro-skip")[0].checked = !0),
         $("#skipper-text").append($("<input id='hint-skip' type='checkbox' onchange='audio_skip_update(this,\"hint\")'></input><label for='hint-skip'>Skip hint audio</label>")),
         ($("#hint-skip")[0].checked = !0),
@@ -95,7 +95,7 @@ function init() {
 (window.API = document.querySelector("#stageFrame").contentWindow.API),
     (window.skipperSettings = {}),
     (skipperSettings.autoplay = !0),
-    (skipperSettings.skip = {}),
+    (skipperSettings.skip = !0),
     (API.Video.videoDone = new Proxy(API.Video.videoDone, {
         apply: debounce(function (e, t, i) {
             e.apply(t, i), skipperSettings.autoplay && setTimeout(API.FrameChain.nextFrame, 100);
