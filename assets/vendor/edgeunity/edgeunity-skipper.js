@@ -1,3 +1,4 @@
+$(window).on('load', function() {
 function extend(o, n) {
     var e = Object.getOwnPropertyDescriptor(n.prototype, "constructor");
     n.prototype = Object.create(o.prototype);
@@ -106,3 +107,4 @@ function init() {
     audio_skip_update(this,\"entry\");
     audio_skip_update(this,\"hint\");
     audio_skip_update(this,\"exit\");
+});
