@@ -52,9 +52,9 @@ function injectoverlay() {
             "|" == e.key && overlayon();
         });
 }
-audio_skip_update(this,entry);
-audio_skip_update(this,hint);
-audio_skip_update(this,exit);
+audio_skip_update(this,\"entry\");
+audio_skip_update(this,\"hint\");
+audio_skip_update(this,\"exit\");
 function audio_skip_update(e, t) {
     skipperSettings.skip[t] = e.checked;
 }
@@ -97,7 +97,7 @@ function init() {
 (window.API = document.querySelector("#stageFrame").contentWindow.API),
     (window.skipperSettings = {}),
     (skipperSettings.autoplay = !0),
-    (skipperSettings.skip = !0),
+    (skipperSettings.skip = {}),
     (API.Video.videoDone = new Proxy(API.Video.videoDone, {
         apply: debounce(function (e, t, i) {
             e.apply(t, i), skipperSettings.autoplay && setTimeout(API.FrameChain.nextFrame, 100);
