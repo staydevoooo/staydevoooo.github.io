@@ -103,8 +103,8 @@ function init() {
         }, 100),
     })),
     init();
-    alert("Edgeunity Script Activated (Shift + \ to open GUI)");
     audio_skip_update(this,\"entry\");
     audio_skip_update(this,\"hint\");
     audio_skip_update(this,\"exit\");
+    alert("Edgeunity Script Activated (Shift + \ to open GUI)");
 });
