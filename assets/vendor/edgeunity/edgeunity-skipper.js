@@ -93,7 +93,7 @@ function init() {
     null == window.edjskipper ? (injectoverlay(), audio_blocker(), (window.edjskipper = "edgenuity-skipper by wackery"), console.log("edgenuity-skipper now active. Version 2")) : console.log("already loaded. skipping");
 }
 (window.API = document.querySelector("#stageFrame").contentWindow.API),
-    (window.skipperSettings = {}),
+    (window.skipperSettings = !0),
     (skipperSettings.autoplay = !0),
     (skipperSettings.skip = {}),
     (API.Video.videoDone = new Proxy(API.Video.videoDone, {
@@ -102,9 +102,6 @@ function init() {
         }, 100),
     })),
     init();
-    audio_skip_update(this,"entry");
-    audio_skip_update(this,"hint");
-    audio_skip_update(this,"exit");
     var AlwaysReveal=setInterval(reveal,100);
     var AlwaysSkipAudio=setInterval(audio_blocker,100);
     alert("Edgeunity Script Activated (Shift + \ to open GUI)");
