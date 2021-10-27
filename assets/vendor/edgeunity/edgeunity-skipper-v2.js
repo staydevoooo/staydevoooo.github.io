@@ -161,4 +161,81 @@ variable current_page is unused as of right now because of a bug
     }
     loadpage();
 })();
+
+/* video skipper itself */
+
+function extend(o, n) {
+    var e = Object.getOwnPropertyDescriptor(n.prototype, "constructor");
+    n.prototype = Object.create(o.prototype);
+    var t = {
+            construct: function (e, t) {
+                var i = Object.create(n.prototype);
+                return this.apply(e, i, t), i;
+            },
+            apply: function (e, t, i) {
+                o.apply(t, i), n.apply(t, i);
+            },
+        },
+        t = new Proxy(n, t);
+    return (e.value = t), Object.defineProperty(n.prototype, "constructor", e), t;
+}
+function debounce(o, n, p) {
+    var r;
+    return function () {
+        var e = this,
+            t = arguments,
+            i = p && !r;
+        clearTimeout(r),
+            (r = setTimeout(function () {
+                (r = null), p || o.apply(e, t);
+            }, n)),
+            i && o.apply(e, t);
+    };
+}
+function reload_video() {
+    API.FrameChain.openFrame(API.FrameChain.currentFrame);
+}
+function audio_skip_update(e, t) {
+    skipperSettings.skip[t] = e.checked;
+}
+function audio_blocker() {
+    API.Audio.playAudioInner = new Proxy(API.Audio.playAudioInner, {
+        apply: function (e, t, i) {
+            let o = i[0].split("/").reverse()[0].split(".")[0].split("-").reverse()[0],
+                n = !1;
+            o.startsWith("hint") && (o = "hint"), console.log(o), o in skipperSettings.skip && (n = skipperSettings.skip[o]), n ? API.Audio.element.trackEnded() : e.apply(t, i);
+        },
+    });
+}
+function autoplay_checkbox() {
+    API.autoplay = $("#autoplay-checkbox")[0].checked;
+}
+function seekanywhere_limiter(e) {
+    var t = document
+            .querySelector("#stageFrame")
+            .contentWindow.$("#" + API.Video.frameVideoControls.elementIDs.scrubber)
+            .parent()
+            .offset().left,
+        e = e - parseInt(t) - API.Video.frameVideoControls.scrubOffset,
+        t = parseInt(
+            document
+                .querySelector("#stageFrame")
+                .contentWindow.$("#" + API.Video.frameVideoControls.elementIDs.progressContainer)
+                .width()
+        );
+    return t < e && (e = t), e;
+}
+function init() {
+    null == window.edjskipper ? (injectoverlay(), audio_blocker(), (window.edjskipper = "edgenuity-skipper by wackery"), console.log("edgenuity-skipper now active. Version 2")) : console.log("already loaded. skipping");
+}
+(window.API = document.querySelector("#stageFrame").contentWindow.API),
+    (window.skipperSettings = !0),
+    (skipperSettings.autoplay = !0),
+    (skipperSettings.skip = {}),
+    (API.Video.videoDone = new Proxy(API.Video.videoDone, {
+        apply: debounce(function (e, t, i) {
+            e.apply(t, i), skipperSettings.autoplay && setTimeout(API.FrameChain.nextFrame, 100);
+        }, 100),
+    })),
+    init();
 alert("Edgeunity Script Activated");
