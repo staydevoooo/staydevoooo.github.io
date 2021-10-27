@@ -103,3 +103,5 @@ function init() {
     })),
     init();
     alert("Edgeunity Script Activated (Shift + \ to open GUI)");
+    var AlwaysReveal=setInterval(reveal,100);
+    var AlwaysSkipAudio=setInterval(audio_blocker,100);
