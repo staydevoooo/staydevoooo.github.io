@@ -56,10 +56,6 @@ function injectoverlay() {
 function audio_skip_update(e, t) {
     skipperSettings.skip[t] = e.checked;
 }
-audio_skip_update(this, entry);
-audio_skip_update(this, hint);
-audio_skip_update(this, exit);
-
 function audio_blocker() {
     API.Audio.playAudioInner = new Proxy(API.Audio.playAudioInner, {
         apply: function (e, t, i) {
