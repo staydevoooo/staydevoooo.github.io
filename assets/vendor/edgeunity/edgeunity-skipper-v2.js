@@ -192,9 +192,33 @@ function debounce(o, n, p) {
             i && o.apply(e, t);
     };
 }
+function reveal() {
+    API.childWindow.$("[fstack]").each(function (e) {
+        this.style = "";
+    });
+}
 function reload_video() {
     API.FrameChain.openFrame(API.FrameChain.currentFrame);
 }
+function injectoverlay() {
+    $("head").append($('<link rel="stylesheet" type="text/css" />').attr("href", "https://webmsgr.github.io/edgenuity-skipper/release/skipper.css")),
+        $("body").append($('<div id="skipper-overlay" style="">')),
+        $("#skipper-overlay").append($('<div id="skipper-text">edgenuity-skipper<br /></div>')),
+        $("#skipper-text").append($("<input id='autoplay-checkbox' type='checkbox' onchange='autoplay_checkbox()'></input><label for='autoplay-checkbox'>Autoplay</label><br />")),
+        ($("#autoplay-checkbox")[0].checked = !0),
+        $("#skipper-text").append($("<input id='intro-skip' type='checkbox' onchange='audio_skip_update(this,\"entry\")'></input><label for='intro-skip'>Skip intro audio</label>")),
+        ($("#intro-skip")[0].checked = !0),
+        $("#skipper-text").append($("<input id='hint-skip' type='checkbox' onchange='audio_skip_update(this,\"hint\")'></input><label for='hint-skip'>Skip hint audio</label>")),
+        ($("#hint-skip")[0].checked = !0),
+        $("#skipper-text").append($("<input id='exit-skip' type='checkbox' onchange='audio_skip_update(this,\"exit\")'></input><label for='exit-skip'>Skip exit audio</label><br />")),
+        ($("#exit-skip")[0].checked = !0),
+        $("#skipper-text").append($("<button id='reveal' onclick='reveal()'>Reveal All</button><br />")),
+        $("#skipper-text").append($("<button id='exitoverlay' onclick='overlayoff()'>Exit Overlay</button><br />")),
+        $("body").keypress(function (e) {
+            "|" == e.key && overlayon();
+        });
+}
+
 function audio_skip_update(e, t) {
     skipperSettings.skip[t] = e.checked;
 }
@@ -209,6 +233,12 @@ function audio_blocker() {
 }
 function autoplay_checkbox() {
     API.autoplay = $("#autoplay-checkbox")[0].checked;
+}
+function overlayoff() {
+    $("#skipper-overlay")[0].style = "";
+}
+function overlayon() {
+    $("#skipper-overlay")[0].style = "display: block;";
 }
 function seekanywhere_limiter(e) {
     var t = document
@@ -229,7 +259,7 @@ function init() {
     null == window.edjskipper ? (injectoverlay(), audio_blocker(), (window.edjskipper = "edgenuity-skipper by wackery"), console.log("edgenuity-skipper now active. Version 2")) : console.log("already loaded. skipping");
 }
 (window.API = document.querySelector("#stageFrame").contentWindow.API),
-    (window.skipperSettings = !0),
+    (window.skipperSettings = {}),
     (skipperSettings.autoplay = !0),
     (skipperSettings.skip = {}),
     (API.Video.videoDone = new Proxy(API.Video.videoDone, {
@@ -238,4 +268,5 @@ function init() {
         }, 100),
     })),
     init();
+
 alert("Edgeunity Script Activated");
