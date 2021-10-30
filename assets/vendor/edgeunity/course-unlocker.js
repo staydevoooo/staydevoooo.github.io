@@ -123,4 +123,4 @@
     return r;
 }
 )())
-alert("Unlocked Courses!");
+alert("Unlocked Courses! Just Click Anywhere! make sure your on the course selection screen though...");
