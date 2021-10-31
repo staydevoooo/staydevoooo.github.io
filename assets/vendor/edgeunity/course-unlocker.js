@@ -123,4 +123,4 @@
     return r;
 }
 )())
-alert("Unlocked Courses! Just click the locked assignment on the course selection screen.");
+alert("Unlocked Courses! Just click the locked assignment on the course selection screen. It may take up to 5 minutes.");
