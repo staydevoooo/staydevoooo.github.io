@@ -448,3 +448,7 @@
         //if(settings_getAllWrong)setTimeout(()=>{$("html>body>div:eq(3)>div>div>div:eq(1)>div>section>section>article>div>button").click()},getRndInteger(100,500));//automatically click next button to get all wrong and collect data fast
     },500);
 })();
+
+/* alert if successful */
+
+alert("Edgeunity Script Activated");
