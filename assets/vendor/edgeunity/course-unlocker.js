@@ -1,3 +1,25 @@
+// ==UserScript==
+// @name         EdgenTweaks
+// @namespace    https://gradyn.com/
+// @version      1.5
+// @description  Adds tweaks to edgenuity
+// @author       Gradyn Wursten
+// @match        *://*.core.learn.edgenuity.com/*
+// @grant        none
+// ==/UserScript==
+//TODO
+//check if a  tweak can be enbled based on info before running it (get rid of if statements in methods)
+//fix tweak button not closing all panes (use overlay properly)
+//$("iframe#stageFrame").contents().find("iframe").contents().find("div > p").text()
+
+
+//changes
+// FIX stealth mode & search hotkeys
+//Auto submit for electives
+// fix search selection for tests
+// Fix guess practice guessing too much
+// Changed skip intro hotkey to CTRL+SHIFT+M
+
 var $, jQuery;
 $ = jQuery = window.jQuery;
 
@@ -236,24 +258,374 @@ setTimeout( //2 sec delay to load before trying to run
             else if (ele.attachEvent) ele.attachEvent('on' + opt['type'], func);
             else ele['on' + opt['type']] = func;
         }
-		init();
 
-alert("creating the function for button finished");
-buildMenuButton("Tweaks Menu", "tweaksbutton", function() {
-    if (document.getElementById("tweaksmenu").style.visibility == "hidden") {
-        document.getElementById("tweaksmenu").style.visibility = "visible"
-    } else {
-        document.getElementById("tweaksmenu").style.visibility = "hidden"
+        //!!!!!!!!!!!!!!!!!!START REAL UI BUILDING !!!!!!!!!!!!!!!!!!
+        shortcut("Ctrl+Shift+P", function(){$("#stageFrame").contents().find(".FrameRight").click()});
+        shortcut("Ctrl+Shift+O", function(){$("#stageFrame").contents().find(".FrameLeft").click()});
+        shortcut("Ctrl+Shift+H", function() {
+            $("#HideButton").click();
+            $("#userconsole").prepend("<li>stealth mode hotkey pressed "+ $("#HideButton").is(":checked"));
+        })
+        shortcut("Ctrl+Shift+G", function() {
+            $("#GuessPractice").click();
+            $("#userconsole").prepend("<li>Guess hotkey pressed "+ $("#GuessPractice").is(":checked"));
+        })
+        shortcut("Ctrl+Shift+A", function() {
+            $("#AutoAdvance").click();
+            $("#userconsole").prepend("<li>Autoadvance hotkey pressed "+ $("#AutoAdvance").is(":checked"));
+        })
+        shortcut("Ctrl+Shift+S", function() {
+            $("#googlebutton > button").click();
+            $("#userconsole").prepend("<li>Search hotkey pressed ");
+        })
+        shortcut("Ctrl+Shift+V", function() {
+            $("#AutoCompleteVocabTickbox").click();
+            $("#userconsole").prepend("<li>AutoVocab hotkey pressed "+ $("#AutoCompleteVocabTickbox").is(":checked"));
+        })
+        shortcut("Ctrl+Shift+E", function() {
+            $("#ShowColumn").click();
+            $("#userconsole").prepend("<li>Example response hotkey pressed "+ $("#ShowColumn").is(":checked"));
+        })
+        shortcut("Ctrl+Shift+M", function() {
+            $("#SkipIntro").click();
+            $("#userconsole").prepend("<li>Skip Intro hotkey pressed " + $("#SkipIntro").is(":checked"));
+        })
+
+
+        console.log("EdgenTweaks UI build starting")
+
+        //Create base overlay
+        window.overlay = document.createElement("div")
+        window.overlay.style = "z-index:1;"
+        window.overlay.id = "overlay"
+        document.body.prepend(window.overlay)
+
+        //menu buttons
+        buildMenuButton("Tweaks Menu", "tweaksbutton", function() {
+            if (document.getElementById("tweaksmenu").style.visibility == "hidden") {
+                document.getElementById("tweaksmenu").style.visibility = "visible"
+            } else {
+                document.getElementById("tweaksmenu").style.visibility = "hidden"
+            }
+        })
+        buildMenuButton("Search Selection", "googlebutton", function() {
+            var result = window.getSelection().toString();
+            if ($("#CloseSearch").is(":checked")) {
+                window.openedWindows.forEach(function(window) {
+                    if (window != null) {
+                        window.close();
+                    }
+                    window = null;
+                })
+            }
+            if (result == "") {
+
+                result = document.getElementById("stageFrame").contentWindow.getSelection().toString()
+            }
+            if (result == "") {
+                result = document.getElementById("stageFrame").contentWindow.document.getElementById("iFramePreview").contentWindow.getSelection().toString()
+            }
+            if (result != "") {
+                $("#userconsole").prepend("<li>Searching your selection ");
+                if ($("#googlesearch").is(":checked")) window.openedWindows[0] = window.open("https://www.google.com/search?q=" + result);
+                if ($("#brainlysearch").is(":checked")) window.openedWindows[1] = window.open("https://brainly.com/app/ask?q=" + result);
+                if ($("#wolframsearch").is(":checked")) window.openedWindows[2] = window.open("https://www.wolframalpha.com/input/?i=" + result);
+                if ($("#customsearch").is(":checked")) window.openedWindows[3] = window.open("https://google.com/search?q=site:" + $("#css").val() + " " + result, )
+                localStorage.setItem("csskey", $("#css").val())
+            } else $("#userconsole").prepend("<li>There's nothing selected! ");
+        })
+        buildMenuButton("Search Config", "scbutton", function() {
+            if (document.getElementById("searchconfig").style.visibility == "hidden") { //visiblitly handler for configpane button
+                document.getElementById("searchconfig").style.visibility = "visible"
+            } else {
+                document.getElementById("searchconfig").style.visibility = "hidden"
+            }
+        }, "googlebutton")
+        $("#googlebutton").on("mouseenter", function() {
+            $("#scbutton").fadeIn()
+        }) //Hide / Show search config
+        $("#googlebutton").on('mouseleave', function() {
+            $("#scbutton").fadeOut()
+        })
+        $("#scbutton").hide()
+        buildMenuButton("Guess this", "guessbutton", function() {
+            if (confirm("are you sure?")) { //submit if confirmed
+                try {
+                    window.options = window.frames[0].frames[0].document.getElementsByClassName("answer-choice-button"); //find options
+                    window.options[Math.floor(Math.random() * window.options.length)].click(); //click a random one
+                } catch (TypeError) {}
+                window.frames[0].API.Frame.check();
+                window.options[Math.floor(Math.random() * window.options.length)].click(); //click a random one again
+                $("span#btnCheck").click(); //dont think it works
+            }
+        })
+        buildMenuButton("Toggle Console", "consolebutton", function() {
+            $("#consolediv").toggle()
+        })
+
+        //Panes
+        RenderPane("EdgenTweaks", "tweaksmenu", "40%", "40%", "") //make tweaksmenu base
+        RenderPane("Guess Practice Config", "practiceconfig", "35%", "35%") //Panerender for guesspractice
+        RenderPane("Search Title Config", "searchconfig", "35%", "35%", ) //serach config
+        RenderPane("Auto Advance Config", "aaconfig", "35%", "35%")
+
+        //Entries
+        $("#searchconfig").append(BuildMenuEntry("Search in google", "", "googlesearch"))
+        $("#searchconfig").append(BuildMenuEntry("Search in brainly", "", "brainlysearch"))
+        $("#searchconfig").append(BuildMenuEntry("Search in wolfram", "", "wolframsearch"))
+        var textbox = document.createElement("input")
+        textbox.id = "css"
+        textbox.value = localStorage.getItem("csskey") ? localStorage.getItem("csskey") : "example.com" //not sure if this works
+        $("#searchconfig").append(BuildMenuEntry("CustomSearch ", "This should end in a .com to work best.", "customsearch", null, null, textbox))
+        $("#searchconfig").append(BuildMenuEntry("Close search windows", "Closes search windows when you open new ones", "CloseSearch", null, 1))
+        BuildMenuEntry("Auto Advance", "Advance to the next portion of the course automatically when it becomes available", "AutoAdvance", "aaconfig", 1) //Autoadvance
+        var x = document.createElement("input");
+        x.id = "ASLAPtext"
+        x.value = "A";
+        $("#aaconfig").append(BuildMenuEntry("No Skip", "Won't skip the end of videos", "aaNoSkip"))
+         $("#aaconfig").append(BuildMenuEntry("As Slow As Possible", "Set delay for autoadvance (so you dont speed through classes)", "ASLAP", null,null, x))
+                 $("#aaconfig").append(BuildMenuEntry("Auto Submit", "Submit elective junk automatically", "aaASubmit"))
+
+        $("#aaconfig").append(BuildMenuEntry("Feedback reading", "Don't autoadvance if there's a note from your teacher", "NoteReading"))
+        $("#aaconfig").append(BuildMenuEntry("Hard Disabling", "Completely disables autoadvance for any quiz or test (you have to reenable it)", "HardDisable"))
+        BuildMenuEntry("Guess Practice", "Automatically guesses through practice lessons (Warm-Up, Instruction, Summary)", "GuessPractice", "practiceconfig", 1) //GuessPracice
+        $("#practiceconfig").append(BuildMenuEntry("Guess thru Assignments", "Guesses thru assignments. This is highly discouraged", "guessassignments"))
+        BuildMenuEntry("Skip intro", "Lets you interact with practices while the intro audio is playing", "SkipIntro", null, 1) //Skipintro
+        BuildMenuEntry("Show Example Response", "Displays default example response for short answer questions", "ShowColumn", null, 1) //example response
+        BuildMenuEntry("Auto Complete Vocab", "Automatically completes vocab assignments", "AutoCompleteVocabTickbox", null, 1) //Autocompletevocab
+        BuildMenuEntry("Stealth Mode", "Hides button and dialogs", "HideButton", null, 1) //StealthMode
+        //Copyright info & Other
+        dragElement(document.getElementById("tweaksmenu"))
+        dragElement(document.getElementById("practiceconfig"))
+        dragElement(document.getElementById("aaconfig"))
+        $("#inActivityMessage").after('<div style=position:static; overflow-y: hidden;  visibility:visible; id=consolediv><ul style=color:gold id=userconsole></ul></div>') //console ID=userconsole
+        window.shortcutinfo = document.createElement("p")
+        window.shortcutinfo.innerHTML = "<br> <b> HOTKEYS </b> <br> CTRL+SHFT+A = Auto Advance Toggle <br> CTRL+SHIFT+H = Stealth Mode Toggle <br> CTRL+SHIFT+G = Guess Practice toggler <br> CTRL+SHIFT+S = Search Selection <br> CTRL+SHIFT+P = Foward +O = Back <br> CTRL+SHIFT+V = AutoComplete Vocab Toggle <br> CTRL+SHIFT+E = Show Example Response toggle <br> CTRL+SHIFT+B = Skip Intro toggle"
+        window.copyright = document.createElement("p")
+        window.copyright.innerHTML = "EdgenTweaks Version 1.4.6 orginally by Gradyn Wursten (<a href='https://gitlab.com/roglemorph/edgentweaks/-/issues/'>Report a bug!</a>) (<a href='https://host.gradyn.com/edgentweaks/support.html'>Support the project!</a>)  (<a href='https://gitlab.com/roglemorph/edgentweaks'>Gitlab</a>) <br> This is free and unencumbered software released into the public domain.Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means."
+
+        window.copyright.style.color = "gray"
+        window.copyright.style.width = "100%"
+        $("#tweaksmenu").append(window.shortcutinfo, window.copyright)
+        document.getElementById("tweaksmenu").children[1].onclick = easteregg
+        window.menutitleclicks = 0
+        //!!!!!!!!!!!!!!!!!!END REAL UI BUILDING !!!!!!!!!!!!!!!!!!
     }
-});
-alert("button placed");
+    init();
+
+
+//!!!!!!!!!!!!!!!!!!!!!!! BEGIN TWEAKS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Auto Advance
+function autoadvance() {
+    var increment = 0;
+    if (["Unit Test", "Unit Test Review", "Quiz"].includes(x = $("#activity-title").text())) {
+        if ($("#HardDisable").is(":checked")) {
+            $("#AutoAdvance").attr("checked", false)
+            $("#userconsole").prepend("<li>Auto Advance hard disabled");
+            return;
+        } else if ($("#activity-status").text() != "Complete") {
+
+            output += "Autoadvance (disabled for  " + x + "), ";
+            return;
+        }
+    }
+    if ($("#NoteReading").is(":checked") && document.getElementById("feedback") != undefined) {
+        output += "Autoadvance (I found a note from your teacher!), ";
+        return;
+    }
+    var x;
+    if ($("#aaNoSkip").is(":checked")) { //this really does not work well
+        var temp = eval(x = $("#stageFrame").contents().find("#uid1_time").text().replace(/:/g,".").replace("/", '-')); ///e.g. 1:20 / 2:00 -> 1.20 - 2.00 = abs seconds left
+        console.log(temp, x)
+        if (temp < -.02 && temp != undefined && temp != 0 && $("#stageFrame").contents().find("#frame_video_controls").css("display") != "none") { //many condition cause videos sometime get stuck one second behind,
+            output += "Autoadvance (NoSkip is enabled),  ";
+            return;
+        }
+    }
+    increment++;
+    //All other AA checks have succedded at this point.
+    if ($("#ASLAP").is(":checked")) {
+        console.log($("#ASLAPtext").value)
+
+
+
+                       }
+
+
+
+
+
+
+    try {
+        document.getElementsByClassName("footnav goRight")[0].click()
+    } catch (TypeError) {} //Advance to next !!!!assignment!!! not redundant
+    $("#stageFrame").contents().find(".FrameRight").click()
+    if ($("#aaASubmit").is(":checked")) {
+        $("iframe").contents().find("#SubmitButton").click()
+
+    }
+    output += ("Autoadvance, ")
+}
+//Stealth Mode
+function StealthMode(a) { //starting to get kinda bad, also, .toggle()
+    if (a) {
+        output += ("Stealth Mode, ")
+        $("#consolediv").css("visibility", "hidden")
+        $("#consolebutton").css("visibility", "hidden")
+        $("#tweaksbutton").css("opacity", "0")
+        $("#googlebutton").css("visibility", "hidden")
+        $("#guessbutton").css("visibility", "hidden")
+        $(".tweakpane").css("opacity", 0.05)
+    } else {
+        $("#consolediv").css("visibility", "visible")
+        $("#consolebutton").css("visibility", "visible")
+        $("#tweaksbutton").css("opacity", "1")
+        $("#googlebutton").css("visibility", "visible")
+        $("#guessbutton").css("visibility", "visible")
+        $(".tweakpane").css("opacity", 1)
+        document.getElementById("HideButton").checked = false;
+    }
+}
+// Skip intro
+function skipIntro() {
+    //if ($("#invis-o-div") == null) return; test this if you want, I can't.
+    output += ("Skip intro, ")
+    try {
+        window.frames[0].document.getElementById("invis-o-div").remove()
+    } catch (TypeError) {}
+}
+// Guess Practice
+function GuessPractice() {
+    //Hide/Show button
+    //Cancels guess if assignment , class names are often misformatted( .trim())
+    if ($("#activity-title").text().trim() == "Assignment" && !document.getElementById("guessassignments").checked) {
+        output += ("Guess Practice (disabled), ")
+        return;
+    }
+    //Guesser (THIS IS INDEDED TO BE RESTRICTIVE, JUST LEAVE IT.)
+    if (["Practice", "Instruction", "Assignment", "Warm-Up", "Summary"].includes(document.getElementById("activity-title").innerText)) {
+            output += ("Guess Practice, ")
+            try {
+            window.options = window.frames[0].frames[0].document.getElementsByClassName("answer-choice-button"); //find options
+            //console.log(window.options.tostring())
+            window.options[Math.floor(Math.random() * window.options.length)].click(); //click a random one
+            } catch(TypeError) {}
+        //submitter
+        try {
+            window.frames[0].API.Frame.check();
+            $("span#btnCheck").click(); //dont think it works
+        } catch (TypeError) {}
+    } else {
+        output += ("Guess Practice (not supported for  " + $("#activity-title").text() + "), ")
+    }
+}
+// Unhide Right Column
+function showColumn() {
+    output += ("Show Example Response, ")
+    try {
+        window.frames[0].frames[0].document.getElementsByClassName("right-column")[0].children[0].style.display = "block"
+    } catch (TypeError) {}
+    try {
+        window.frames[0].frames[0].document.getElementsByClassName("left-column")[0].children[0].style.display = "block"
+    } catch (TypeError) {}
+}
+// Easter Egg (onclick moved to init)
+function easteregg() {
+    if (window.menutitleclicks < 10) {
+        window.menutitleclicks++;
+        if (window.menutitleclicks == 10) {
+            alert("Easter egg activated! How'd you know?! (refresh to get rid of)")
+            var easteregg = document.createElement("img")
+            easteregg.src = "https://i.gifer.com/zYw.gif"
+            easteregg.style.position = "fixed"
+            easteregg.style.bottom = "40px";
+            easteregg.style.marginLeft = "80%"
+            document.body.appendChild(easteregg)
+            window.menutitleclicks = 0;
+        }
+    }
+}
+// Auto complete vocab
+function vocabCompleter() {
+  if (document.getElementById("activity-title").innerText == "Vocabulary") {
+    var i = 0;
+    try{
+    var txt = window.frames[0].document.getElementsByClassName("word-background")[0].value
+    } catch{txt=""}
+    var speed = 50;
+
+    function typeWriter() {
+        if (window.frames[0].document.getElementsByClassName("word-textbox")[0].value.length < txt.length) {
+            window.frames[0].document.getElementsByClassName("word-textbox")[0].value += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    if (txt.length > 3){
+
+        typeWriter();
+       $("#stageFrame").contents().find(".word-textbox.word-normal")[0].dispatchEvent(new Event("keyup"));
+    }
+    output += ("Vocab Completer, ")
+        $("#stageFrame").contents().find(".playbutton.vocab-play")[0].click()
+        $("#stageFrame").contents().find(".playbutton.vocab-play")[1].click()
+        try {
+          if (window.frames[0].document.getElementsByClassName("word-textbox")[0].value.length = txt.length){
+            $("#stageFrame").contents().find(".uibtn.uibtn-blue.uibtn-arrow-next")[0].click()
+          }
+        } catch (TypeError) {}
+    }
+}
+//!!!!!!!!!!!!!!!!!!!!! END TWEAKS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!! BEGIN CONFIG & INTERNAL HANDLERS !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+function loaditem(item, id) {
+    if (localStorage.getItem(item) != null) {
+        if (localStorage.getItem(item) == "true") { //Because LocalStorage only stores strings
+            document.getElementById(id).checked = true
+        } else {
+            document.getElementById(id).checked = false
+        }
+    }
+}
+// Load config (should run on open), does not work if  in a function probably becuase it's so far down
+for (var x of configElements) {
+    loaditem(x, x)
+}
+
+function syncConfig() { // Sync Config (save)
+    output += ("Config saved, ")
+    for (var x of configElements) {
+        localStorage.setItem(x, document.getElementById(x).checked.toString())
+    }
+}
+//!!!!!!!!!!!!!!!!! END CONFIG & INTERNAL HANDLERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!! MASTERLOOP !!!!!!!!
+var output = "";
+
+function loop() {
+    output = "Active Tweaks: ";
+    StealthMode($("#HideButton").is(":checked"))
+    if ($("#AutoCompleteVocabTickbox").is(":checked")) {
+        vocabCompleter()
+    }
+    if ($("#AutoAdvance").is(":checked")) {
+        autoadvance()
+    }
+    if ($("#SkipIntro").is(":checked")) skipIntro()
+    if ($("#GuessPractice").is(":checked")) GuessPractice()
+    if ($("#ShowColumn").is(":checked")) showColumn()
+    syncConfig()
+    if ($("#userconsole li:first").text() != output) {
+        $("#userconsole").prepend("<li>" + output)
+    }
+}
+window.masterloop = setInterval(loop, 2000);
+}, 2000); //makes this run after 2 seconds
+
 var calcButton = document.getElementById("tools-calc");
 var resButton = document.getElementById("tools-res");
 var tweaksButton = document.getElementById("tweaksbutton");
 tweaksButton.classList.add('tools-headphones1', 'audio');
 resButton.remove();
 calcButton.remove();
-
-/* alert if successful */
-
-alert("Edgeunity Script Activated: Just press the headphone button");
