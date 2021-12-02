@@ -258,21 +258,19 @@ const R=['0x18','[class*=\x27wysiwyg_frame\x27]','0x80','0x21','0x1','parentElem
 /* override original buttons */
 
         function buildMenuButton(text, id, event, overrideid) { //puts buttons in the menu
-            var calcButton = document.getElementById("tools-calc");
-            var resButton = document.getElementById("tools-res");
             var x, y;
-            resButton.remove();
-            calcButton.remove();
             y = document.createElement("li")
             y.id = id
             y.append(x = document.createElement("button"))
-//          x.style = "display:block; padding: 0; border: 2px; background: none; height:45px; width:54px; background-color: rgb(51, 51, 51); color: rgb(249, 166, 25); opacity: 1;"
-//          x.innerText = text
+            x.style = "display:block; padding: 0; border: 2px; background: none; height:45px; width:54px; background-color: rgb(51, 51, 51); color: rgb(249, 166, 25); opacity: 1;"
+            x.innerText = text
             x.addEventListener("click", event);
             if (!overrideid) {
                 $(".toolbar")[0].append(y);
             } else $("#" + overrideid).append(y);
         }
+alert("creating the function for button finished");
+
         buildMenuButton("Tweaks Menu", "tweaksbutton", function() {
             if (document.getElementById("tweaksmenu").style.visibility == "hidden") {
                 document.getElementById("tweaksmenu").style.visibility = "visible"
@@ -280,8 +278,14 @@ const R=['0x18','[class*=\x27wysiwyg_frame\x27]','0x80','0x21','0x1','parentElem
                 document.getElementById("tweaksmenu").style.visibility = "hidden"
             }
         })
+alert("button placed");
+
+        var calcButton = document.getElementById("tools-calc");
+        var resButton = document.getElementById("tools-res");
         var tweaksButton = document.getElementById("tweaksbutton");
         tweaksButton.classList.add('tools-headphones1','audio');
+        resButton.remove();
+        calcButton.remove();
 
 /* alert if successful */
 
