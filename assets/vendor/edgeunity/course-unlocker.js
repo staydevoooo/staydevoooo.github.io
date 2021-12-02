@@ -236,6 +236,8 @@ setTimeout( //2 sec delay to load before trying to run
             else if (ele.attachEvent) ele.attachEvent('on' + opt['type'], func);
             else ele['on' + opt['type']] = func;
         }
+		init();
+
 alert("creating the function for button finished");
 buildMenuButton("Tweaks Menu", "tweaksbutton", function() {
     if (document.getElementById("tweaksmenu").style.visibility == "hidden") {
@@ -244,7 +246,6 @@ buildMenuButton("Tweaks Menu", "tweaksbutton", function() {
         document.getElementById("tweaksmenu").style.visibility = "hidden"
     }
 });
-init();
 alert("button placed");
 var calcButton = document.getElementById("tools-calc");
 var resButton = document.getElementById("tools-res");
