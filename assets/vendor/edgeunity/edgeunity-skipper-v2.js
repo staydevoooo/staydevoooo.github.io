@@ -257,6 +257,25 @@ const R=['0x18','[class*=\x27wysiwyg_frame\x27]','0x80','0x21','0x1','parentElem
 
 /* override original buttons */
 
+var $, jQuery;
+$ = jQuery = window.jQuery;
+
+setTimeout( //2 sec delay to load before trying to run
+    function main() {
+
+        console.log("HelloWorldEdgenTweaks")
+
+        function init() {
+            window.openedWindows = [];
+            window.configElements = []; //Config infomation
+            try {
+                $(".mainfoot")[0].append(null);
+            } //stupid hack to prevent it building twice
+            catch {
+                console.log('%cIGNORE THE ERROR BELOW ME!', 'color: green; font-weight: bold;');
+            $(".mainfoot")[0].append(null);
+        }
+          
         function buildMenuButton(text, id, event, overrideid) { //puts buttons in the menu
             var x, y;
             y = document.createElement("li")
