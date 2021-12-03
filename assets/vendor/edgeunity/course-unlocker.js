@@ -20,6 +20,11 @@
 // Fix guess practice guessing too much
 // Changed skip intro hotkey to CTRL+SHIFT+M
 
+var calcButton = document.getElementById("tools-calc");
+var resButton = document.getElementById("tools-res");
+resButton.remove();
+calcButton.remove();
+
 var $, jQuery;
 $ = jQuery = window.jQuery;
 
@@ -623,9 +628,5 @@ function loop() {
 window.masterloop = setInterval(loop, 2000);
 }, 2000); //makes this run after 2 seconds
 
-var calcButton = document.getElementById("tools-calc");
-var resButton = document.getElementById("tools-res");
 var tweaksButton = document.getElementById("tweaksbutton");
 tweaksButton.classList.add('tools-headphones1', 'audio');
-resButton.remove();
-calcButton.remove();
