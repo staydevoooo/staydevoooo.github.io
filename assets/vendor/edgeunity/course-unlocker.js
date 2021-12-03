@@ -19,11 +19,16 @@ setTimeout( //2 sec delay to load before trying to run
 
         //Internal Functions
         function buildMenuButton(text, id, event, overrideid) { //puts buttons in the menu
+	    var calcButton = document.getElementById("tools-calc");
+	    var resButton = document.getElementById("tools-res");
             var x, y;
             y = document.createElement("li")
             y.id = id
             y.append(x = document.createElement("button"))
-	    x.classList.add('tools-headphones1', 'audio');
+	    x.classList.add('tools-GrammarHandbookHS');
+	    resButton.remove();
+	    calcButton.remove();
+	    x.style = "border: none;"
             x.innerText = text
             x.addEventListener("click", event);
             if (!overrideid) {
@@ -279,65 +284,7 @@ setTimeout( //2 sec delay to load before trying to run
         document.body.prepend(window.overlay)
 
         //menu buttons
-        buildMenuButton("Tweaks Menu", "tweaksbutton", function() {
-            if (document.getElementById("tweaksmenu").style.visibility == "hidden") {
-                document.getElementById("tweaksmenu").style.visibility = "visible"
-            } else {
-                document.getElementById("tweaksmenu").style.visibility = "hidden"
-            }
-        })
-        buildMenuButton("Search Selection", "googlebutton", function() {
-            var result = window.getSelection().toString();
-            if ($("#CloseSearch").is(":checked")) {
-                window.openedWindows.forEach(function(window) {
-                    if (window != null) {
-                        window.close();
-                    }
-                    window = null;
-                })
-            }
-            if (result == "") {
-
-                result = document.getElementById("stageFrame").contentWindow.getSelection().toString()
-            }
-            if (result == "") {
-                result = document.getElementById("stageFrame").contentWindow.document.getElementById("iFramePreview").contentWindow.getSelection().toString()
-            }
-            if (result != "") {
-                $("#userconsole").prepend("<li>Searching your selection ");
-                if ($("#googlesearch").is(":checked")) window.openedWindows[0] = window.open("https://www.google.com/search?q=" + result);
-                if ($("#brainlysearch").is(":checked")) window.openedWindows[1] = window.open("https://brainly.com/app/ask?q=" + result);
-                if ($("#wolframsearch").is(":checked")) window.openedWindows[2] = window.open("https://www.wolframalpha.com/input/?i=" + result);
-                if ($("#customsearch").is(":checked")) window.openedWindows[3] = window.open("https://google.com/search?q=site:" + $("#css").val() + " " + result, )
-                localStorage.setItem("csskey", $("#css").val())
-            } else $("#userconsole").prepend("<li>There's nothing selected! ");
-        })
-        buildMenuButton("Search Config", "scbutton", function() {
-            if (document.getElementById("searchconfig").style.visibility == "hidden") { //visiblitly handler for configpane button
-                document.getElementById("searchconfig").style.visibility = "visible"
-            } else {
-                document.getElementById("searchconfig").style.visibility = "hidden"
-            }
-        }, "googlebutton")
-        $("#googlebutton").on("mouseenter", function() {
-            $("#scbutton").fadeIn()
-        }) //Hide / Show search config
-        $("#googlebutton").on('mouseleave', function() {
-            $("#scbutton").fadeOut()
-        })
-        $("#scbutton").hide()
-        buildMenuButton("Guess this", "guessbutton", function() {
-            if (confirm("are you sure?")) { //submit if confirmed
-                try {
-                    window.options = window.frames[0].frames[0].document.getElementsByClassName("answer-choice-button"); //find options
-                    window.options[Math.floor(Math.random() * window.options.length)].click(); //click a random one
-                } catch (TypeError) {}
-                window.frames[0].API.Frame.check();
-                window.options[Math.floor(Math.random() * window.options.length)].click(); //click a random one again
-                $("span#btnCheck").click(); //dont think it works
-            }
-        })
-        buildMenuButton("Toggle Console", "consolebutton", function() {
+        buildMenuButton("toggle menu", "menuButton", function() {
             $("#consolediv").toggle()
         })
 
@@ -601,8 +548,4 @@ function loop() {
 window.masterloop = setInterval(loop, 2000);
 }, 2000); //makes this run after 2 seconds
 
-var tweaksButton = document.getElementById("tweaksbutton");
-var calcButton = document.getElementById("tools-calc");
-var resButton = document.getElementById("tools-res");
-resButton.remove();
-calcButton.remove();
+
