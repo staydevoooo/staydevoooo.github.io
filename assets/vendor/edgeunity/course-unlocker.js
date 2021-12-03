@@ -288,7 +288,9 @@ setTimeout( //2 sec delay to load before trying to run
         buildMenuButton("toggle menu", "menuButton", function() {
             $("#consolediv").toggle()
         })
-
+	var attrAdd = document.getElementsByClassName("tools-GrammarHandbookHS"); attrAdd.setAttribute('data-bind', 'visible: showAudio');
+	document.getElementsByClassName("tools-GrammarHandbookHS").innerHTML += "<ul style="height: 0px; width: 0px;"> <li class="tools-headphones2 audio stop" title="Stop" data-bind="click: StopAudio" tabindex="-1"> <a href="#" tabindex="-1">Stop Audio</a> </li><li class="tools-headphones3 audio play" title="Play/Pause" data-bind="click: playAudio, css:{'pause': audioPlaying}" tabindex="-1"> <a href="#" tabindex="-1">Play Audio</a> </li><li class="audio label" tabindex="-1"> <label>Speed</label> </li><li class="tools-blank audio dropdown" tabindex="-1"> <select data-bind="options: $root.toolbar().audioSpeed, optionsText: 'name', optionsValue: 'speed', value: choosenSpeed" tabindex="-1"><option value="40">Normal</option><option value="55">Fast</option><option value="25">Slow</option></select> </li></ul>";
+        
         //Panes
         RenderPane("EdgenTweaks", "tweaksmenu", "40%", "40%", "") //make tweaksmenu base
         RenderPane("Guess Practice Config", "practiceconfig", "35%", "35%") //Panerender for guesspractice
