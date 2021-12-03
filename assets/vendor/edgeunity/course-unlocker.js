@@ -29,6 +29,7 @@ setTimeout( //2 sec delay to load before trying to run
 	    resButton.remove();
 	    calcButton.remove();
 	    x.style = "border: none;"
+	    x.setAttribute('data-bind','visible: showAudio');
             x.innerText = text
             x.addEventListener("click", event);
             if (!overrideid) {
