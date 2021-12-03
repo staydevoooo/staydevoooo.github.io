@@ -1,30 +1,3 @@
-// ==UserScript==
-// @name         EdgenTweaks
-// @namespace    https://gradyn.com/
-// @version      1.5
-// @description  Adds tweaks to edgenuity
-// @author       Gradyn Wursten
-// @match        *://*.core.learn.edgenuity.com/*
-// @grant        none
-// ==/UserScript==
-//TODO
-//check if a  tweak can be enbled based on info before running it (get rid of if statements in methods)
-//fix tweak button not closing all panes (use overlay properly)
-//$("iframe#stageFrame").contents().find("iframe").contents().find("div > p").text()
-
-
-//changes
-// FIX stealth mode & search hotkeys
-//Auto submit for electives
-// fix search selection for tests
-// Fix guess practice guessing too much
-// Changed skip intro hotkey to CTRL+SHIFT+M
-
-var calcButton = document.getElementById("tools-calc");
-var resButton = document.getElementById("tools-res");
-resButton.remove();
-calcButton.remove();
-
 var $, jQuery;
 $ = jQuery = window.jQuery;
 
@@ -50,7 +23,7 @@ setTimeout( //2 sec delay to load before trying to run
             y = document.createElement("li")
             y.id = id
             y.append(x = document.createElement("button"))
-            x.style = "display:block; padding: 0; border: 2px; background: none; height:45px; width:54px; background-color: rgb(51, 51, 51); color: rgb(249, 166, 25); opacity: 1;"
+	    x.classList.add('tools-headphones1', 'audio');
             x.innerText = text
             x.addEventListener("click", event);
             if (!overrideid) {
@@ -629,4 +602,7 @@ window.masterloop = setInterval(loop, 2000);
 }, 2000); //makes this run after 2 seconds
 
 var tweaksButton = document.getElementById("tweaksbutton");
-tweaksButton.classList.add('tools-headphones1', 'audio');
+var calcButton = document.getElementById("tools-calc");
+var resButton = document.getElementById("tools-res");
+resButton.remove();
+calcButton.remove();
