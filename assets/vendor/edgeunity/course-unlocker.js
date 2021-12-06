@@ -1,16 +1,9 @@
 var $, jQuery;
 $ = jQuery = window.jQuery;
-setTimeout( //2 sec delay to load before trying to run
     function main() {
         function init() {
             window.openedWindows = [];
             window.configElements = []; //Config infomation
-            try {
-                $(".mainfoot")[0].append(null);
-            } //stupid hack to prevent it building twice
-            catch {
-                console.log('%cIGNORE THE ERROR BELOW ME!', 'color: green; font-weight: bold;');
-            $(".mainfoot")[0].append(null);
         }
         function buildMenuButton(text, id, event, overrideid) { //puts buttons in the menu
 	    var calcButton = document.getElementById("tools-calc");
