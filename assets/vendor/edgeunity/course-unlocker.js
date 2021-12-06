@@ -243,38 +243,6 @@ setTimeout( //2 sec delay to load before trying to run
             else ele['on' + opt['type']] = func;
         }
 
-        //!!!!!!!!!!!!!!!!!!START REAL UI BUILDING !!!!!!!!!!!!!!!!!!
-        shortcut("Ctrl+Shift+P", function(){$("#stageFrame").contents().find(".FrameRight").click()});
-        shortcut("Ctrl+Shift+O", function(){$("#stageFrame").contents().find(".FrameLeft").click()});
-        shortcut("Ctrl+Shift+H", function() {
-            $("#HideButton").click();
-            $("#userconsole").prepend("<li>stealth mode hotkey pressed "+ $("#HideButton").is(":checked"));
-        })
-        shortcut("Ctrl+Shift+G", function() {
-            $("#GuessPractice").click();
-            $("#userconsole").prepend("<li>Guess hotkey pressed "+ $("#GuessPractice").is(":checked"));
-        })
-        shortcut("Ctrl+Shift+A", function() {
-            $("#AutoAdvance").click();
-            $("#userconsole").prepend("<li>Autoadvance hotkey pressed "+ $("#AutoAdvance").is(":checked"));
-        })
-        shortcut("Ctrl+Shift+S", function() {
-            $("#googlebutton > button").click();
-            $("#userconsole").prepend("<li>Search hotkey pressed ");
-        })
-        shortcut("Ctrl+Shift+V", function() {
-            $("#AutoCompleteVocabTickbox").click();
-            $("#userconsole").prepend("<li>AutoVocab hotkey pressed "+ $("#AutoCompleteVocabTickbox").is(":checked"));
-        })
-        shortcut("Ctrl+Shift+E", function() {
-            $("#ShowColumn").click();
-            $("#userconsole").prepend("<li>Example response hotkey pressed "+ $("#ShowColumn").is(":checked"));
-        })
-        shortcut("Ctrl+Shift+M", function() {
-            $("#SkipIntro").click();
-            $("#userconsole").prepend("<li>Skip Intro hotkey pressed " + $("#SkipIntro").is(":checked"));
-        })
-
 
         console.log("EdgenTweaks UI build starting")
 
