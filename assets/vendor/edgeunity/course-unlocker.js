@@ -286,6 +286,7 @@ setTimeout( //2 sec delay to load before trying to run
 
         //menu buttons
         buildMenuButton("toggle menu", "menuButton", function() {
+            alert("blm");
             $("#consolediv").toggle()
         })
         
@@ -548,3 +549,4 @@ function loop() {
 }
 window.masterloop = setInterval(loop, 2000);
 }, 2000); //makes this run after 2 seconds
+
