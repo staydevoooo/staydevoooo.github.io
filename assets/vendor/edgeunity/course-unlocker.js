@@ -1,22 +1,6 @@
 var $, jQuery;
 $ = jQuery = window.jQuery;
 
-setTimeout( //2 sec delay to load before trying to run
-    function main() {
-
-        console.log("HelloWorldEdgenTweaks")
-
-        function init() {
-            window.openedWindows = [];
-            window.configElements = []; //Config infomation
-            try {
-                $(".mainfoot")[0].append(null);
-            } //stupid hack to prevent it building twice
-            catch {
-                console.log('%cIGNORE THE ERROR BELOW ME!', 'color: green; font-weight: bold;');
-            $(".mainfoot")[0].append(null);
-        }
-
         //Internal Functions
         function buildMenuButton(text, id, event, overrideid) { //puts buttons in the menu
 	    var calcButton = document.getElementById("tools-calc");
@@ -529,23 +513,7 @@ function syncConfig() { // Sync Config (save)
 //!!!!!! MASTERLOOP !!!!!!!!
 var output = "";
 
-function loop() {
-    output = "Active Tweaks: ";
-    StealthMode($("#HideButton").is(":checked"))
-    if ($("#AutoCompleteVocabTickbox").is(":checked")) {
-        vocabCompleter()
-    }
-    if ($("#AutoAdvance").is(":checked")) {
-        autoadvance()
-    }
-    if ($("#SkipIntro").is(":checked")) skipIntro()
-    if ($("#GuessPractice").is(":checked")) GuessPractice()
-    if ($("#ShowColumn").is(":checked")) showColumn()
-    syncConfig()
-    if ($("#userconsole li:first").text() != output) {
-        $("#userconsole").prepend("<li>" + output)
-    }
-}
+
 window.masterloop = setInterval(loop, 2000);
 }, 2000); //makes this run after 2 seconds
 
