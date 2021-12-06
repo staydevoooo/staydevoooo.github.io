@@ -339,6 +339,170 @@ setTimeout( //2 sec delay to load before trying to run
     }
     init();
 
+
+//!!!!!!!!!!!!!!!!!!!!!!! BEGIN TWEAKS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Auto Advance
+function autoadvance() {
+    var increment = 0;
+    if (["Unit Test", "Unit Test Review", "Quiz"].includes(x = $("#activity-title").text())) {
+        if ($("#HardDisable").is(":checked")) {
+            $("#AutoAdvance").attr("checked", false)
+            $("#userconsole").prepend("<li>Auto Advance hard disabled");
+            return;
+        } else if ($("#activity-status").text() != "Complete") {
+
+            output += "Autoadvance (disabled for  " + x + "), ";
+            return;
+        }
+    }
+    if ($("#NoteReading").is(":checked") && document.getElementById("feedback") != undefined) {
+        output += "Autoadvance (I found a note from your teacher!), ";
+        return;
+    }
+    var x;
+    if ($("#aaNoSkip").is(":checked")) { //this really does not work well
+        var temp = eval(x = $("#stageFrame").contents().find("#uid1_time").text().replace(/:/g,".").replace("/", '-')); ///e.g. 1:20 / 2:00 -> 1.20 - 2.00 = abs seconds left
+        console.log(temp, x)
+        if (temp < -.02 && temp != undefined && temp != 0 && $("#stageFrame").contents().find("#frame_video_controls").css("display") != "none") { //many condition cause videos sometime get stuck one second behind,
+            output += "Autoadvance (NoSkip is enabled),  ";
+            return;
+        }
+    }
+    increment++;
+    //All other AA checks have succedded at this point.
+    if ($("#ASLAP").is(":checked")) {
+        console.log($("#ASLAPtext").value)
+
+
+
+                       }
+
+
+
+
+
+
+    try {
+        document.getElementsByClassName("footnav goRight")[0].click()
+    } catch (TypeError) {} //Advance to next !!!!assignment!!! not redundant
+    $("#stageFrame").contents().find(".FrameRight").click()
+    if ($("#aaASubmit").is(":checked")) {
+        $("iframe").contents().find("#SubmitButton").click()
+
+    }
+    output += ("Autoadvance, ")
+}
+//Stealth Mode
+function StealthMode(a) { //starting to get kinda bad, also, .toggle()
+    if (a) {
+        output += ("Stealth Mode, ")
+        $("#consolediv").css("visibility", "hidden")
+        $("#consolebutton").css("visibility", "hidden")
+        $("#tweaksbutton").css("opacity", "0")
+        $("#googlebutton").css("visibility", "hidden")
+        $("#guessbutton").css("visibility", "hidden")
+        $(".tweakpane").css("opacity", 0.05)
+    } else {
+        $("#consolediv").css("visibility", "visible")
+        $("#consolebutton").css("visibility", "visible")
+        $("#tweaksbutton").css("opacity", "1")
+        $("#googlebutton").css("visibility", "visible")
+        $("#guessbutton").css("visibility", "visible")
+        $(".tweakpane").css("opacity", 1)
+        document.getElementById("HideButton").checked = false;
+    }
+}
+// Skip intro
+function skipIntro() {
+    //if ($("#invis-o-div") == null) return; test this if you want, I can't.
+    output += ("Skip intro, ")
+    try {
+        window.frames[0].document.getElementById("invis-o-div").remove()
+    } catch (TypeError) {}
+}
+// Guess Practice
+function GuessPractice() {
+    //Hide/Show button
+    //Cancels guess if assignment , class names are often misformatted( .trim())
+    if ($("#activity-title").text().trim() == "Assignment" && !document.getElementById("guessassignments").checked) {
+        output += ("Guess Practice (disabled), ")
+        return;
+    }
+    //Guesser (THIS IS INDEDED TO BE RESTRICTIVE, JUST LEAVE IT.)
+    if (["Practice", "Instruction", "Assignment", "Warm-Up", "Summary"].includes(document.getElementById("activity-title").innerText)) {
+            output += ("Guess Practice, ")
+            try {
+            window.options = window.frames[0].frames[0].document.getElementsByClassName("answer-choice-button"); //find options
+            //console.log(window.options.tostring())
+            window.options[Math.floor(Math.random() * window.options.length)].click(); //click a random one
+            } catch(TypeError) {}
+        //submitter
+        try {
+            window.frames[0].API.Frame.check();
+            $("span#btnCheck").click(); //dont think it works
+        } catch (TypeError) {}
+    } else {
+        output += ("Guess Practice (not supported for  " + $("#activity-title").text() + "), ")
+    }
+}
+// Unhide Right Column
+function showColumn() {
+    output += ("Show Example Response, ")
+    try {
+        window.frames[0].frames[0].document.getElementsByClassName("right-column")[0].children[0].style.display = "block"
+    } catch (TypeError) {}
+    try {
+        window.frames[0].frames[0].document.getElementsByClassName("left-column")[0].children[0].style.display = "block"
+    } catch (TypeError) {}
+}
+// Easter Egg (onclick moved to init)
+function easteregg() {
+    if (window.menutitleclicks < 10) {
+        window.menutitleclicks++;
+        if (window.menutitleclicks == 10) {
+            alert("Easter egg activated! How'd you know?! (refresh to get rid of)")
+            var easteregg = document.createElement("img")
+            easteregg.src = "https://i.gifer.com/zYw.gif"
+            easteregg.style.position = "fixed"
+            easteregg.style.bottom = "40px";
+            easteregg.style.marginLeft = "80%"
+            document.body.appendChild(easteregg)
+            window.menutitleclicks = 0;
+        }
+    }
+}
+// Auto complete vocab
+function vocabCompleter() {
+  if (document.getElementById("activity-title").innerText == "Vocabulary") {
+    var i = 0;
+    try{
+    var txt = window.frames[0].document.getElementsByClassName("word-background")[0].value
+    } catch{txt=""}
+    var speed = 50;
+
+    function typeWriter() {
+        if (window.frames[0].document.getElementsByClassName("word-textbox")[0].value.length < txt.length) {
+            window.frames[0].document.getElementsByClassName("word-textbox")[0].value += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    if (txt.length > 3){
+
+        typeWriter();
+       $("#stageFrame").contents().find(".word-textbox.word-normal")[0].dispatchEvent(new Event("keyup"));
+    }
+    output += ("Vocab Completer, ")
+        $("#stageFrame").contents().find(".playbutton.vocab-play")[0].click()
+        $("#stageFrame").contents().find(".playbutton.vocab-play")[1].click()
+        try {
+          if (window.frames[0].document.getElementsByClassName("word-textbox")[0].value.length = txt.length){
+            $("#stageFrame").contents().find(".uibtn.uibtn-blue.uibtn-arrow-next")[0].click()
+          }
+        } catch (TypeError) {}
+    }
+}
+//!!!!!!!!!!!!!!!!!!!!! END TWEAKS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!!!!!!!!!!!!!!! BEGIN CONFIG & INTERNAL HANDLERS !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function loaditem(item, id) {
@@ -384,4 +548,3 @@ function loop() {
 }
 window.masterloop = setInterval(loop, 2000);
 }, 2000); //makes this run after 2 seconds
-
