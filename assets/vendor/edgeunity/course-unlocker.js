@@ -255,59 +255,9 @@ setTimeout( //2 sec delay to load before trying to run
         //menu buttons
         buildMenuButton("toggle menu", "menuButton", function() {
             alert("blm");
-            $("#consolediv").toggle()
         })
-        
-        //Panes
-        RenderPane("EdgenTweaks", "tweaksmenu", "40%", "40%", "") //make tweaksmenu base
-        RenderPane("Guess Practice Config", "practiceconfig", "35%", "35%") //Panerender for guesspractice
-        RenderPane("Search Title Config", "searchconfig", "35%", "35%", ) //serach config
-        RenderPane("Auto Advance Config", "aaconfig", "35%", "35%")
-
-        //Entries
-        $("#searchconfig").append(BuildMenuEntry("Search in google", "", "googlesearch"))
-        $("#searchconfig").append(BuildMenuEntry("Search in brainly", "", "brainlysearch"))
-        $("#searchconfig").append(BuildMenuEntry("Search in wolfram", "", "wolframsearch"))
-        var textbox = document.createElement("input")
-        textbox.id = "css"
-        textbox.value = localStorage.getItem("csskey") ? localStorage.getItem("csskey") : "example.com" //not sure if this works
-        $("#searchconfig").append(BuildMenuEntry("CustomSearch ", "This should end in a .com to work best.", "customsearch", null, null, textbox))
-        $("#searchconfig").append(BuildMenuEntry("Close search windows", "Closes search windows when you open new ones", "CloseSearch", null, 1))
-        BuildMenuEntry("Auto Advance", "Advance to the next portion of the course automatically when it becomes available", "AutoAdvance", "aaconfig", 1) //Autoadvance
-        var x = document.createElement("input");
-        x.id = "ASLAPtext"
-        x.value = "A";
-        $("#aaconfig").append(BuildMenuEntry("No Skip", "Won't skip the end of videos", "aaNoSkip"))
-         $("#aaconfig").append(BuildMenuEntry("As Slow As Possible", "Set delay for autoadvance (so you dont speed through classes)", "ASLAP", null,null, x))
-                 $("#aaconfig").append(BuildMenuEntry("Auto Submit", "Submit elective junk automatically", "aaASubmit"))
-
-        $("#aaconfig").append(BuildMenuEntry("Feedback reading", "Don't autoadvance if there's a note from your teacher", "NoteReading"))
-        $("#aaconfig").append(BuildMenuEntry("Hard Disabling", "Completely disables autoadvance for any quiz or test (you have to reenable it)", "HardDisable"))
-        BuildMenuEntry("Guess Practice", "Automatically guesses through practice lessons (Warm-Up, Instruction, Summary)", "GuessPractice", "practiceconfig", 1) //GuessPracice
-        $("#practiceconfig").append(BuildMenuEntry("Guess thru Assignments", "Guesses thru assignments. This is highly discouraged", "guessassignments"))
-        BuildMenuEntry("Skip intro", "Lets you interact with practices while the intro audio is playing", "SkipIntro", null, 1) //Skipintro
-        BuildMenuEntry("Show Example Response", "Displays default example response for short answer questions", "ShowColumn", null, 1) //example response
-        BuildMenuEntry("Auto Complete Vocab", "Automatically completes vocab assignments", "AutoCompleteVocabTickbox", null, 1) //Autocompletevocab
-        BuildMenuEntry("Stealth Mode", "Hides button and dialogs", "HideButton", null, 1) //StealthMode
-        //Copyright info & Other
-        dragElement(document.getElementById("tweaksmenu"))
-        dragElement(document.getElementById("practiceconfig"))
-        dragElement(document.getElementById("aaconfig"))
-        $("#inActivityMessage").after('<div style=position:static; overflow-y: hidden;  visibility:visible; id=consolediv><ul style=color:gold id=userconsole></ul></div>') //console ID=userconsole
-        window.shortcutinfo = document.createElement("p")
-        window.shortcutinfo.innerHTML = "<br> <b> HOTKEYS </b> <br> CTRL+SHFT+A = Auto Advance Toggle <br> CTRL+SHIFT+H = Stealth Mode Toggle <br> CTRL+SHIFT+G = Guess Practice toggler <br> CTRL+SHIFT+S = Search Selection <br> CTRL+SHIFT+P = Foward +O = Back <br> CTRL+SHIFT+V = AutoComplete Vocab Toggle <br> CTRL+SHIFT+E = Show Example Response toggle <br> CTRL+SHIFT+B = Skip Intro toggle"
-        window.copyright = document.createElement("p")
-        window.copyright.innerHTML = "EdgenTweaks Version 1.4.6 orginally by Gradyn Wursten (<a href='https://gitlab.com/roglemorph/edgentweaks/-/issues/'>Report a bug!</a>) (<a href='https://host.gradyn.com/edgentweaks/support.html'>Support the project!</a>)  (<a href='https://gitlab.com/roglemorph/edgentweaks'>Gitlab</a>) <br> This is free and unencumbered software released into the public domain.Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means."
-
-        window.copyright.style.color = "gray"
-        window.copyright.style.width = "100%"
-        $("#tweaksmenu").append(window.shortcutinfo, window.copyright)
-        document.getElementById("tweaksmenu").children[1].onclick = easteregg
-        window.menutitleclicks = 0
-        //!!!!!!!!!!!!!!!!!!END REAL UI BUILDING !!!!!!!!!!!!!!!!!!
     }
     init();
-
 
 //!!!!!!!!!!!!!!!!!!!!!!! BEGIN TWEAKS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // Auto Advance
