@@ -486,7 +486,29 @@ function vocabCompleter() {
         } catch (TypeError) {}
     }
 }
+//!!!!!!!!!!!!!!!!!!!!! END TWEAKS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!! BEGIN CONFIG & INTERNAL HANDLERS !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+function loaditem(item, id) {
+    if (localStorage.getItem(item) != null) {
+        if (localStorage.getItem(item) == "true") { //Because LocalStorage only stores strings
+            document.getElementById(id).checked = true
+        } else {
+            document.getElementById(id).checked = false
+        }
+    }
+}
+// Load config (should run on open), does not work if  in a function probably becuase it's so far down
+for (var x of configElements) {
+    loaditem(x, x)
+}
+
+function syncConfig() { // Sync Config (save)
+    output += ("Config saved, ")
+    for (var x of configElements) {
+        localStorage.setItem(x, document.getElementById(x).checked.toString())
+    }
+}
 //!!!!!!!!!!!!!!!!! END CONFIG & INTERNAL HANDLERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!!!!!! MASTERLOOP !!!!!!!!
 var output = "";
