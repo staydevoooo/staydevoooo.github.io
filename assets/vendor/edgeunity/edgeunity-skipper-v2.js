@@ -1,3 +1,16 @@
+// ==UserScript==
+// @name         Edgenuity Master Controller v0.4
+// @namespace    http://tampermonkey.net/
+// @version      0.4
+// @description  Edgenuity is killing us. So someone made an automatic next clicker, which was given major improvements by Hmelck and further improved by other members of the (now shut down) subreddit. It was then update to 0.4, and moved on Github by XANADryden. This is the best and most current version to survive. VIVA LA RESISTANCE. 
+// @author       Hemlck and XANADryden with contributions to this project from: /u/Mrynot88 , /u/Turtlemower.
+// @match        *://*.core.learn.edgenuity.com/*
+// @grant        none
+// ==/UserScript==
+
+
+// If you want to look at more things like this, go to the subreddit at reddit.com/r/edgenuity.
+
 /* override original buttons */
 
 function buildMenuButton(text,id,event,overrideid){var calcButton=document.getElementById("tools-calc");var resButton=document.getElementById("tools-res");var x,y;y=document.createElement("li")
@@ -8,7 +21,7 @@ x.setAttribute('data-bind','visible: showAudio');x.innerText=text
 x.addEventListener("click",event);if(!overrideid){$(".toolbar")[0].append(y)}else $("#"+overrideid).append(y)}
 buildMenuButton("toggle menu","menuButton",function(){alert("blm")})
 
-/* Config */
+// ----- User Settings ----- //
 
 var skip_speaking_intros = true;
 // Default = true (If problems occur, try turning this off by replacing true with false)
@@ -195,6 +208,24 @@ function reveal() {
 function reload_video() {
     API.FrameChain.openFrame(API.FrameChain.currentFrame);
 }
+function injectoverlay() {
+    $("head").append($('<link rel="stylesheet" type="text/css" />').attr("href", "https://webmsgr.github.io/edgenuity-skipper/release/skipper.css")),
+        $("body").append($('<div id="skipper-overlay" style="">')),
+        $("#skipper-overlay").append($('<div id="skipper-text">edgenuity-skipper<br /></div>')),
+        $("#skipper-text").append($("<input id='autoplay-checkbox' type='checkbox' onchange='autoplay_checkbox()'></input><label for='autoplay-checkbox'>Autoplay</label><br />")),
+        ($("#autoplay-checkbox")[0].checked = !0),
+        $("#skipper-text").append($("<input id='intro-skip' type='checkbox' onchange='audio_skip_update(this,\"entry\")'></input><label for='intro-skip'>Skip intro audio</label>")),
+        ($("#intro-skip")[0].checked = !0),
+        $("#skipper-text").append($("<input id='hint-skip' type='checkbox' onchange='audio_skip_update(this,\"hint\")'></input><label for='hint-skip'>Skip hint audio</label>")),
+        ($("#hint-skip")[0].checked = !0),
+        $("#skipper-text").append($("<input id='exit-skip' type='checkbox' onchange='audio_skip_update(this,\"exit\")'></input><label for='exit-skip'>Skip exit audio</label><br />")),
+        ($("#exit-skip")[0].checked = !0),
+        $("#skipper-text").append($("<button id='reveal' onclick='reveal()'>Reveal All</button><br />")),
+        $("#skipper-text").append($("<button id='exitoverlay' onclick='overlayoff()'>Exit Overlay</button><br />")),
+        $("body").keypress(function (e) {
+            "|" == e.key && overlayon();
+        });
+}
 
 function audio_skip_update(e, t) {
     skipperSettings.skip[t] = e.checked;
@@ -252,4 +283,4 @@ const R=['0x18','[class*=\x27wysiwyg_frame\x27]','0x80','0x21','0x1','parentElem
 
 /* alert if successful */
 
-alert("Edgeunity Script Activated: Just press the headphone button");
+alert("Edgeunity Script Activated");
