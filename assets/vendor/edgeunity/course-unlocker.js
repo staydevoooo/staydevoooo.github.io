@@ -1,4 +1,4 @@
-const selectable = document.getElementById('stageFrame')
+const selectable = document.getElementById('iFramePreview')
 selectable.addEventListener('click', () => {
   if (document.selection) { 
     const range = document.body.createTextRange();
