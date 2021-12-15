@@ -1,7 +1,14 @@
-function buildMenuButton(text,id,event,overrideid){var calcButton=document.getElementById("tools-calc");var resButton=document.getElementById("tools-res");var x,y;y=document.createElement("li")
-y.id=id
-y.append(x=document.createElement("button"))
-x.classList.add('tools-GrammarHandbookHS');resButton.remove();calcButton.remove();x.style="border: none;"
-x.setAttribute('data-bind','visible: showAudio');x.innerText=text
-x.addEventListener("click",event);if(!overrideid){$(".toolbar")[0].append(y)}else $("#"+overrideid).append(y)}
-buildMenuButton("toggle menu","menuButton",function(){alert("blm")})
+const selectable = document.getElementById('lesson-title')
+selectable.addEventListener('click', () => {
+  if (document.selection) { 
+    const range = document.body.createTextRange();
+    range.moveToElementText(selectable);
+    range.select();
+  } else if (window.getSelection) {
+    const range = document.createRange();
+    range.selectNode(selectable);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    window.open('http://google.com/search?q='+'"'+selectable.innerHTML+'"');
+  }
+})
