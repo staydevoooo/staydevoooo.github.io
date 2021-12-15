@@ -1,4 +1,4 @@
-const selectable = document.getElementById('lesson-title')
+const selectable = document.getElementById('stageFrame')
 selectable.addEventListener('click', () => {
   if (document.selection) { 
     const range = document.body.createTextRange();
