@@ -1,4 +1,4 @@
-const selectable = document.getElementById('iFramePreview')
+const selectable = document.getElementsByClassName('Practice_Question_Body')
 selectable.addEventListener('click', () => {
   if (document.selection) { 
     const range = document.body.createTextRange();
