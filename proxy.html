@@ -118,8 +118,8 @@
                                              <form autocomplete="off" method="POST" action="/service/gateway/" id="urlSearch" style="margin-top:80px;margin-bottom:75px;">
                                                 <input type="password" style="display:none!important;" readonly>
                                                 <div class="webflow-style-input">
-                                                   <input name="url" type="text" placeholder="Enter URL..." id="inputURL" autocomplete="false_off1" required/>
-                                                   <button onclick="getURLValue();">
+                                                   <input name="url" type="text" placeholder="Enter URL..." id="url" autocomplete="false_off1" required/>
+                                                   <button id="initiate">
                                                       <ion-icon name="arrow-forward-outline"></ion-icon>
                                                    </button>
                                                 </div>
@@ -329,12 +329,24 @@
       </div>
       <!-- inject:js -->
       <script>
-         function getURLValue(){
-             // Selecting the input element and get its value 
-             var inputVal = "https://devoooo-proxy.herokuapp.com/proxy/" + document.getElementById("inputURL").value ;
-             // Displaying the value
-             window.open(inputVal)
-         }
+
+var input = document.querySelector('#url');
+ 
+input.addEventListener('keyup', (key) => {
+  if (key.keyCode == 13) {
+    if (!input.value.trim().length) return;
+    window.location.assign(`https://luna-proxy.herokuapp.com/prox/?url=${btoa(input.value)}`);
+  }
+});
+ 
+ 
+document.querySelector("#initiate").addEventListener('click', () => {
+ 
+  if (!input.value.trim().length) return;
+  window.location.assign(`https://luna-proxy.herokuapp.com/prox/?url=${btoa(input.value)}`);
+ 
+});
+
       </script>
       <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
       <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
