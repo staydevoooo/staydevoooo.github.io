@@ -329,24 +329,29 @@
       </div>
       <!-- inject:js -->
       <script>
+require('https://luna-proxy.herokuapp.com/uv/uv.config.js');
 
-var input = document.querySelector('#url');
- 
-input.addEventListener('keyup', (key) => {
-  if (key.keyCode == 13) {
-    if (!input.value.trim().length) return;
-    window.location.assign(`https://luna-proxy.herokuapp.com/prox/?url=${btoa(input.value)}`);
-  }
-});
- 
- 
-document.querySelector("#initiate").addEventListener('click', () => {
- 
-  if (!input.value.trim().length) return;
-  window.location.assign(`https://luna-proxy.herokuapp.com/prox/?url=${btoa(input.value)}`);
- 
+const form = document.querySelector('#urlSearch');
+const input = document.querySelector('#url');
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  window.navigator.serviceWorker.register('https://luna-proxy.herokuapp.com/sw.js', {
+    scope: __uv$config.prefix
+  }).then(() => {
+    let url = input.value.trim();
+    if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+    else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+
+
+    window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+  });
 });
 
+function isUrl(val = '') {
+  if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
+  return false;
+};
       </script>
       <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
       <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
