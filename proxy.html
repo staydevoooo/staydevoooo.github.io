@@ -328,40 +328,31 @@
       <!-- inject:js -->
       <script>
 
-self.__uv$config = {
-  prefix: 'https://luna-proxy.herokuapp.com/service/',
-  bare: 'https://luna-proxy.herokuapp.com/bare/',
-  encodeUrl: Ultraviolet.codec.xor.encode,
-  decodeUrl: Ultraviolet.codec.xor.decode,
-  handler: 'https://luna-proxy.herokuapp.com/uv/uv.handler.js',
-  bundle: 'https://luna-proxy.herokuapp.com/uv/uv.bundle.js',
-  config: 'https://luna-proxy.herokuapp.com/uv/uv.config.js',
-  sw: 'https://luna-proxy.herokuapp.com/uv/uv.sw.js',
-};
  
 const form = document.querySelector("#urlSearch");
 const input = document.querySelector("#url");
  
 form.addEventListener('submit', async event => {
-  event.preventDefault();
-  window.navigator.serviceWorker.register('https://luna-proxy.herokuapp.com/sw.js', {
-    scope: __uv$config.prefix
-  }).then(() => {
-    let url = input.value.trim();
-    if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
-    else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+    event.preventDefault();
+    window.navigator.serviceWorker.register('https://luna-proxy.herokuapp.com/sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        let url = input.value.trim();
+        if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+        else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
  
  
-    window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
-  });
+        window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+    });
 });
  
-function isUrl(val = '') {
-  if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
-  return false;
+function isUrl(val = ''){
+    if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
+    return false;
 };
-
       </script>
+      <script src="uv/uv.bundle.js"></script>
+      <script src="uv/uv.config.js"></script>
       <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
       <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
       <script src="assets/vendor/modernizr/modernizr.js"></script>
