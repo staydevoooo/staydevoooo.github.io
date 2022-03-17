@@ -115,13 +115,15 @@
                                        <div data-aos="zoom-in" style="float: left; width: 810px; padding-left: 30px;">
                                           <colorbox style="display:inline-block" id="black" class="square">
                                              <h3 style="font-family: 'Sansita', sans-serif;font-size:32px;color:white; text-align:center;padding-top:45px;">Luna</h3>
-                                             <form autocomplete="off" id="urlSearch" style="margin-top:80px;margin-bottom:75px;">
-	<input type="password" style="display:none!important;" readonly>
-	<div class="webflow-style-input">
-		<input name="url" type="text" placeholder="Enter URL..." id="url" autocomplete="false_off1" required/>
-		<button id="initiate"><ion-icon name="arrow-forward-outline"></ion-icon></button>
-	</div>
-</form>
+                                             <form id="searchUrl" style="margin-top:80px;margin-bottom:75px;">
+                                                <input type="password" style="display:none!important;" readonly>
+                                                <div class="webflow-style-input">
+                                                   <input placeholder="Type to Search..." id="inputUrl">
+                                                   <button id="initiate">
+                                                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                                                   </button>
+                                                </div>
+                                             </form>
                                              <br style="clear: left;" />
                                              <strong>
                                                 <u>
@@ -327,32 +329,27 @@
       </div>
       <!-- inject:js -->
       <script>
-
- 
-const form = document.querySelector("#urlSearch");
-const input = document.querySelector("#url");
- 
-form.addEventListener('submit', async event => {
-    event.preventDefault();
-    window.navigator.serviceWorker.register('https://luna-proxy.herokuapp.com/sw.js', {
-        scope: __uv$config.prefix
-    }).then(() => {
-        let url = input.value.trim();
-        if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
-        else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
- 
- 
-        window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
-    });
-});
- 
-function isUrl(val = ''){
-    if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
-    return false;
-};
+         const form = document.querySelector('#searchUrl');
+         const input = document.querySelector('#inputUrl');
+          
+         form.addEventListener('submit', async event => {
+         event.preventDefault();
+         function isUrl(val = '') {
+         if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
+         return false;
+         };
+         let url = input.value.trim();
+         if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+         else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+         window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+         });
+          
+         function openLink() {
+         window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url)
+         };
       </script>
-      <script src="uv/uv.bundle.js"></script>
-      <script src="uv/uv.config.js"></script>
+      <script src="https://luna-proxy.herokuapp.com/uv/uv.bundle.js"></script>
+      <script src="https://luna-proxy.herokuapp.com/uv/uv.config.js"></script>
       <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
       <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
       <script src="assets/vendor/modernizr/modernizr.js"></script>
@@ -385,4 +382,4 @@ function isUrl(val = ''){
       <!-- endinject -->
       <a class="lift-off2 js-lift-off2 lift-off_show2" href="https://cash.app/$mrdevoooo" target="_blank" style="border-radius: 999px;"><i class="fa fa-money"></i></a>
    </body>
-</html> 
+</html>
