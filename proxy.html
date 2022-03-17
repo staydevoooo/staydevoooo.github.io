@@ -15,7 +15,7 @@
       <!--favicon icon-->
       <link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_4.ico">
       <!--title-->
-      <title>My Drive - Google Drive </title>
+      <title>My Drive - Google Drive</title>
       <!--google-->
       <script async src="//www.googletagmanager.com/gtag/js?id=UA-148031841-1"></script>
       <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5731588986654370",enable_page_level_ads:true});</script>
@@ -341,11 +341,11 @@
          let url = input.value.trim();
          if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
          else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
-         window.location.href = 'https://luna-proxy.herokuapp.com/' + __uv$config.prefix + __uv$config.encodeUrl(url);
+         window.location.href = 'https://luna-proxy.herokuapp.com' + __uv$config.prefix + __uv$config.encodeUrl(url);
          });
           
          function openLink() {
-         window.location.href = 'https://luna-proxy.herokuapp.com/' + __uv$config.prefix + __uv$config.encodeUrl(url)
+         window.location.href = 'https://luna-proxy.herokuapp.com' + __uv$config.prefix + __uv$config.encodeUrl(url)
          };
       </script>
       <script src="https://luna-proxy.herokuapp.com/uv/uv.bundle.js"></script>
