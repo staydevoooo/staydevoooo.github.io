@@ -341,11 +341,12 @@
          let url = input.value.trim();
          if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
          else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
-         window.location.href = 'https://luna-proxy.herokuapp.com' + __uv$config.prefix + __uv$config.encodeUrl(url);
+         var link = 'https://luna-proxy.herokuapp.com' + __uv$config.prefix + __uv$config.encodeUrl(url);
+         window.open(link, '_blank').focus();
          });
           
          function openLink() {
-         window.location.href = 'https://luna-proxy.herokuapp.com' + __uv$config.prefix + __uv$config.encodeUrl(url)
+         window.locations.href = 'https://luna-proxy.herokuapp.com' + __uv$config.prefix + __uv$config.encodeUrl(url)
          };
       </script>
       <script src="https://luna-proxy.herokuapp.com/uv/uv.bundle.js"></script>
