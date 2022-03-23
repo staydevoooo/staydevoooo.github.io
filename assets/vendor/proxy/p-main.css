@@ -7,6 +7,9 @@ body {
   	background-size: cover;
 }
 
+@media screen and (min-width:600px) {
+	zoom: 75%!important;
+}
 
 .tos {
 	color: #bd3b36!important;
@@ -373,7 +376,7 @@ html {
 	 border-bottom-left-radius: 2px;
 	 border-bottom-right-radius: 2px;
 	 background-position: 0% 0%;
-	 background: linear-gradient(to right, #93b2fa, #aeffab, #e8ffb5, #aeffab, #93b2fa, #aeffab);
+	 background: linear-gradient(to right, #222a3d, #0f300e, #e8ffb5, #0f300e, #222a3d, #0f300e);
 	 background-size: 500% auto;
 	 animation: gradient 3s linear infinite;
 
