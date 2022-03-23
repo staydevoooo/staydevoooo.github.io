@@ -1,10 +1,10 @@
 body {
 	background-color: #34062c;
-	background: url('https://staydevoooo.github.io/assets/img/banner/download.jpg') no-repeat center center fixed !important;
-	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
+	background: url('https://staydevoooo.github.io/assets/img/banner/download.jpg');
+	min-height: 100%;
+   	background-size: cover;
+   	background-repeat: no-repeat;
+   	background-position: center center;
 }
 
 @media screen and (min-width:600px) {
