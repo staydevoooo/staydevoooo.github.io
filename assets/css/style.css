@@ -5417,10 +5417,11 @@ address p {
 
 .banner-proxy {
 	background-image: url('https://staydevoooo.github.io/assets/img/banner/download.jpg');
-  min-height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  	min-height: 100%;
+  	min-width: 100%;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center center;
 
 }
 
