@@ -8,10 +8,6 @@ body {
 }
 
 
-@media screen and (min-width:600px) {
-	zoom: 75%!important;
-}
-
 .tos {
 	color: #bd3b36!important;
 }
