@@ -1,10 +1,10 @@
 body {
 	background-color: #34062c;
-	background: url('https://staydevoooo.github.io/assets/img/banner/download.jpg')!important;
-	height: 100%;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+	background: url('https://staydevoooo.github.io/assets/img/banner/download.jpg') no-repeat center center fixed !important;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 
 
