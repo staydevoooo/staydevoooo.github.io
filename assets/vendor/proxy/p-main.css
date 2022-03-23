@@ -1,6 +1,7 @@
 body {
 	background-color: #34062c;
 	background: url('https://staydevoooo.github.io/assets/img/banner/download.jpg')!important;
+	height: 100%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
