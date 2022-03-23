@@ -1,6 +1,6 @@
 body {
 	background-color: #34062c;
-	background: url('https://staydevoooo.github.io/assets/img/banner/download-2.jpg');
+	background: url('https://staydevoooo.github.io/assets/img/banner/download-3.jpg');
 	min-height: 100%;
   	min-width: 100%;
    	background-size: cover;
@@ -377,7 +377,7 @@ html {
 	 border-bottom-left-radius: 2px;
 	 border-bottom-right-radius: 2px;
 	 background-position: 0% 0%;
-	 background: linear-gradient(to right, #066b4b, #044a34, #7792a6, #044a34, #066b4b, #044a34);
+	 background: linear-gradient(to right, #033d2b, #274733, #46545e, #274733, #033d2b, #274733);
 	 background-size: 500% auto;
 	 animation: gradient 3s linear infinite;
 
