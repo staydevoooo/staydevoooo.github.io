@@ -18,17 +18,8 @@ function buildMenuButton(text, id, event, overrideid) {
     } else $("#" + overrideid).append(y)
 }
 buildMenuButton("toggle menu", "menuButton", function() {
-    var result = window.getSelection().toString();
-
-        window.openedWindows.forEach(function(window) {
-            if (window != null) {
-                window.close();
-            }
-            window = null;
-        })
-    
+    var result = window.getSelection().toString();    
     if (result == "") {
-
         result = document.getElementById("stageFrame").contentWindow.getSelection().toString()
     }
     if (result == "") {
@@ -36,8 +27,9 @@ buildMenuButton("toggle menu", "menuButton", function() {
     }
     if (result != "") {
         window.openedWindows[0] = window.open("https://www.google.com/search?q=" + result);
-        localStorage.setItem("csskey", $("#css").val())
-    } else alert("There's nothing selected!");
+    } else {
+        alert("There's nothing selected!");
+    }
 })
 
 /* auto answer */
