@@ -1,4 +1,4 @@
-var accounts = ["8617279", "8617278"];
+var accounts = ["8617279"];
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
