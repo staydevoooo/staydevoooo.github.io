@@ -3,15 +3,14 @@ var accounts = [
   "8617278"
 ];
 
-var importedcssId = 'importedCss'; // you could encode the css path itself to generate id..
+var importedcssId = 'importedCss';
 if (!document.getElementById(importedcssId)) {
   var importedcssHead = document.getElementsByTagName('head')[0];
   var importedcssLink = document.createElement('link');
   importedcssLink.id = importedcssId;
   importedcssLink.rel = 'stylesheet';
   importedcssLink.type = 'text/css';
-//  importedcssLink.href = 'https://staydevoooo.github.io/assets/vendor/edgeunity/form/theme/bulma.css';
-  importedcssLink.href = 'https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
+  importedcssLink.href = 'https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css';
   importedcssLink.media = 'all';
   importedcssHead.appendChild(importedcssLink);
 }
@@ -34,7 +33,7 @@ script.onload = function () {
       if (accounts.indexOf(studentId.toLowerCase()) > -1) {
         Swal.fire({
           icon: 'success',
-          title: 'Successfully Registered Device',
+          title: 'Device Registered',
           text: 'Script is now activated',
           timer: 2500,
           timerProgressBar: true,
