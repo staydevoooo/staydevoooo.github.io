@@ -10,7 +10,8 @@ if (!document.getElementById(importedcssId)) {
   importedcssLink.id = importedcssId;
   importedcssLink.rel = 'stylesheet';
   importedcssLink.type = 'text/css';
-  importedcssLink.href = 'https://staydevoooo.github.io/assets/vendor/edgeunity/form/theme/bulma.css';
+//  importedcssLink.href = 'https://staydevoooo.github.io/assets/vendor/edgeunity/form/theme/bulma.css';
+  importedcssLink.href = 'https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
   importedcssLink.media = 'all';
   importedcssHead.appendChild(importedcssLink);
 }
