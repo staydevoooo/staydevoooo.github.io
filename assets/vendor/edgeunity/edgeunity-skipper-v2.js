@@ -3,16 +3,16 @@ var accounts = [
   "8617278"
 ];
 
-var cssId = 'myCss'; // you could encode the css path itself to generate id..
-if (!document.getElementById(cssId)) {
-  var head = document.getElementsByTagName('head')[0];
-  var link = document.createElement('link');
-  link.id = cssId;
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-  link.href = 'https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css';
-  link.media = 'all';
-  head.appendChild(link);
+var importedcssId = 'importedCss'; // you could encode the css path itself to generate id..
+if (!document.getElementById(importedcssId)) {
+  var importedcssHead = document.getElementsByTagName('head')[0];
+  var importedcssLink = document.createElement('link');
+  importedcssLink.id = importedcssId;
+  importedcssLink.rel = 'stylesheet';
+  importedcssLink.type = 'text/css';
+  importedcssLink.href = 'https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma/bulma.css';
+  importedcssLink.media = 'all';
+  importedcssHead.appendChild(importedcssLink);
 }
 
 var script = document.createElement('script');
