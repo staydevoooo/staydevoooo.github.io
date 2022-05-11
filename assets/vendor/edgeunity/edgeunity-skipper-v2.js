@@ -1,9 +1,8 @@
 var accounts = [
-  "8617279",
-  "8617278"
+  "8617279"
 ];
 
-var importedcssId = 'importedCss';
+var importedcssId = 'importedCss'; // you could encode the css path itself to generate id..
 if (!document.getElementById(importedcssId)) {
   var importedcssHead = document.getElementsByTagName('head')[0];
   var importedcssLink = document.createElement('link');
@@ -20,30 +19,33 @@ script.onload = function () {
   Swal.fire({
     title: 'Register your device',
     text: 'Type in your Student ID Number',
+    footer: '<p style="font-size:14px;">Need to purchase a license? Contact my Instagram <a href="https://www.instagram.com/devooooyt">@devooooyt</a></p>',
     showCancelButton: true,
     confirmButtonText: 'Register',
     showLoaderOnConfirm: true,
-    timer: 30000,
+    timer: 60000,
     timerProgressBar: true,
-    input: 'text',
+    input: 'number',
     inputAttributes: {
-      autocapitalize: 'off'
+    autocapitalize: 'off'
     },
     preConfirm: (studentId) => {
       if (accounts.indexOf(studentId.toLowerCase()) > -1) {
         Swal.fire({
-          icon: 'success',
-          title: 'Device Registered',
+          //icon: 'success',
+          title: 'Device Successfully Registered',
           text: 'Script is now activated',
+          footer: '<p style="font-size:14px;">*You have to manually press the bookmark each time to activate the script.</p>',
           timer: 2500,
           timerProgressBar: true,
         });
         executeScript();
       } else {
         Swal.fire({
-          icon: 'error',
+          //icon: 'error',
           title: 'Could Not Registered Device',
           text: 'Please purchase a license or try again',
+          footer: '<p style="font-size:14px;">Need to purchase a license? Contact my Instagram <a href="https://www.instagram.com/devooooyt">@devooooyt</a></p>',
           timer: 5000,
           timerProgressBar: true,
         });
